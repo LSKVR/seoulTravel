@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Seoul Discovery | 서울의 매력을 발견하세요</title>
+  
+  <!-- Google Fonts: Noto Serif for headlines, Plus Jakarta Sans for UI -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+  
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS CDN with custom config -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "var(--surface-container-high)",
+            "surface-container-highest": "var(--surface-container-highest)",
+            "secondary-container": "var(--secondary-container)",
+            "tertiary-fixed-dim": "var(--tertiary-fixed-dim)",
+            "secondary-fixed": "var(--secondary-fixed)",
+            "surface-variant": "var(--surface-variant)",
+            "surface-container-lowest": "var(--surface-container-lowest)",
+            "primary": "var(--primary)",
+            "on-secondary-fixed-variant": "var(--on-secondary-fixed-variant)",
+            "error": "var(--error)",
+            "outline-variant": "var(--outline-variant)",
+            "primary-fixed-dim": "var(--primary-fixed-dim)",
+            "on-error-container": "var(--on-error-container)",
+            "inverse-primary": "var(--inverse-primary)",
+            "outline": "var(--outline)",
+            "on-secondary-container": "var(--on-secondary-container)",
+            "surface-container-low": "var(--surface-container-low)",
+            "surface": "var(--surface)",
+            "on-primary": "var(--on-primary)",
+            "inverse-on-surface": "var(--inverse-on-surface)",
+            "secondary": "var(--secondary)",
+            "primary-container": "var(--primary-container)",
+            "on-primary-container": "var(--on-primary-container)",
+            "tertiary-container": "var(--tertiary-container)",
+            "secondary-fixed-dim": "var(--secondary-fixed-dim)",
+            "inverse-surface": "var(--inverse-surface)",
+            "background": "var(--background)",
+            "on-surface": "var(--on-surface)",
+            "surface-container": "var(--surface-container)",
+            "on-tertiary-container": "var(--on-tertiary-container)",
+            "on-tertiary": "var(--on-tertiary)",
+            "primary-fixed": "var(--primary-fixed)",
+            "on-secondary-fixed": "var(--on-secondary-fixed)",
+            "on-primary-fixed": "var(--on-primary-fixed)",
+            "surface-bright": "var(--surface-bright)",
+            "on-tertiary-fixed": "var(--on-tertiary-fixed)",
+            "tertiary-fixed": "var(--tertiary-fixed)",
+            "tertiary": "var(--tertiary)",
+            "on-surface-variant": "var(--on-surface-variant)",
+            "surface-dim": "var(--surface-dim)",
+            "surface-tint": "var(--surface-tint)",
+            "error-container": "var(--error-container)",
+            "on-tertiary-fixed-variant": "var(--on-tertiary-fixed-variant)",
+            "on-secondary": "var(--on-secondary)",
+            "on-error": "var(--on-error)",
+            "on-background": "var(--on-background)",
+            "on-primary-fixed-variant": "var(--on-primary-fixed-variant)"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "unit": "4px",
+            "gutter": "24px",
+            "2xl": "48px",
+            "xl": "32px",
+            "sm": "8px",
+            "xs": "4px",
+            "margin-mobile": "16px",
+            "3xl": "64px",
+            "margin-desktop": "40px",
+            "md": "16px",
+            "lg": "24px",
+            "container-max": "1200px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "body-sm": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+            "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* CSS Variables for Dynamic Light/Dark Theme Switcher */
+    :root {
+      --surface-container-high: #e2e7ff;
+      --surface-container-highest: #dae2fd;
+      --secondary-container: #d0e1fb;
+      --tertiary-fixed-dim: #89ceff;
+      --secondary-fixed: #d3e4fe;
+      --surface-variant: #dae2fd;
+      --surface-container-lowest: #ffffff;
+      --primary: #003ec7;
+      --on-secondary-fixed-variant: #38485d;
+      --error: #ba1a1a;
+      --outline-variant: #c3c5d9;
+      --primary-fixed-dim: #b7c4ff;
+      --on-error-container: #93000a;
+      --inverse-primary: #b7c4ff;
+      --outline: #737688;
+      --on-secondary-container: #54647a;
+      --surface-container-low: #f2f3ff;
+      --surface: #faf8ff;
+      --on-primary: #ffffff;
+      --inverse-on-surface: #eef0ff;
+      --secondary: #505f76;
+      --primary-container: #0052ff;
+      --on-primary-container: #dfe3ff;
+      --tertiary-container: #006d9c;
+      --secondary-fixed-dim: #b7c8e1;
+      --inverse-surface: #283044;
+      --background: #faf8ff;
+      --on-surface: #131b2e;
+      --surface-container: #eaedff;
+      --on-tertiary-container: #cee9ff;
+      --on-tertiary: #ffffff;
+      --primary-fixed: #dde1ff;
+      --on-secondary-fixed: #0b1c30;
+      --on-primary-fixed: #001452;
+      --surface-bright: #faf8ff;
+      --on-tertiary-fixed: #001e2f;
+      --tertiary-fixed: #c9e6ff;
+      --tertiary: #005479;
+      --on-surface-variant: #434656;
+      --surface-dim: #d2d9f4;
+      --surface-tint: #004ced;
+      --error-container: #ffdad6;
+      --on-tertiary-fixed-variant: #004c6e;
+      --on-secondary: #ffffff;
+      --on-error: #ffffff;
+      --on-background: #131b2e;
+      --on-primary-fixed-variant: #0038b6;
+    }
+
+    .dark {
+      --surface-container-high: #202c46;
+      --surface-container-highest: #2b3855;
+      --secondary-container: #38485d;
+      --tertiary-fixed-dim: #004c6e;
+      --secondary-fixed: #1e2d41;
+      --surface-variant: #283044;
+      --surface-container-lowest: #0c1322;
+      --primary: #b7c4ff;
+      --on-secondary-fixed-variant: #b7c8e1;
+      --error: #ffb4ab;
+      --outline-variant: #434656;
+      --primary-fixed-dim: #00227b;
+      --on-error-container: #ffdad6;
+      --inverse-primary: #004ced;
+      --outline: #8d90a2;
+      --on-secondary-container: #d3e4fe;
+      --surface-container-low: #1b2337;
+      --surface: #131b2e;
+      --on-primary: #001e68;
+      --inverse-on-surface: #131b2e;
+      --secondary: #b7c8e1;
+      --primary-container: #0030a5;
+      --on-primary-container: #dde1ff;
+      --tertiary-container: #c9e6ff;
+      --secondary-fixed-dim: #38485d;
+      --inverse-surface: #eef0ff;
+      --background: #131b2e;
+      --on-surface: #eef0ff;
+      --surface-container: #20283c;
+      --on-tertiary-container: #001e2f;
+      --on-tertiary: #00344d;
+      --primary-fixed: #001452;
+      --on-secondary-fixed: #d3e4fe;
+      --on-primary-fixed: #dde1ff;
+      --surface-bright: #1b2337;
+      --on-tertiary-fixed: #c9e6ff;
+      --tertiary-fixed: #004c6e;
+      --tertiary: #89ceff;
+      --on-surface-variant: #c3c5d9;
+      --surface-dim: #0c1322;
+      --surface-tint: #b7c4ff;
+      --error-container: #93000a;
+      --on-tertiary-fixed-variant: #cee9ff;
+      --on-secondary: #223146;
+      --on-error: #690005;
+      --on-background: #eef0ff;
+      --on-primary-fixed-variant: #b7c4ff;
+    }
+
+    body { 
+      font-family: 'Inter', sans-serif; 
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.7) 100%);
+    }
+    .glass-card {
+      backdrop-filter: blur(12px);
+      background: rgba(var(--surface-container-lowest), 0.85);
+    }
+    .noto-serif { 
+      font-family: 'Noto Serif KR', serif; 
+    }
+    
+    /* Theme Transition styling */
+    .theme-transition, .theme-transition * {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, shadow 0.3s ease;
+    }
+
+    /* Map SVG Pin pulse keyframes */
+    @keyframes pinPulse {
+      0% {
+        r: 6px;
+        opacity: 0.8;
+      }
+      100% {
+        r: 28px;
+        opacity: 0;
+      }
+    }
+    .pin-ripple {
+      animation: pinPulse 2.2s infinite ease-out;
+      transform-origin: center;
+    }
+    .map-pin {
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .map-pin:hover {
+      transform: scale(1.25);
+    }
+    
+    /* Highlight animation when searching or focusing pin */
+    @keyframes pinHighlight {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.8);
+        filter: drop-shadow(0 0 16px var(--primary));
+      }
+    }
+    .map-pin.pin-highlight {
+      animation: pinHighlight 1s ease-in-out 3;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--surface-container-low);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--outline-variant);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--outline);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface theme-transition flex flex-col min-h-screen">
+
+  <!-- Top Navigation Bar -->
+  <nav class="fixed top-0 left-0 w-full z-40 flex justify-between items-center px-gutter py-4 bg-surface/85 backdrop-blur-md border-b border-outline-variant/20">
+    <a href="#" class="font-headline-md text-headline-md font-bold text-primary">Seoul Discovery</a>
+    
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center space-x-md">
+      <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#attractions" data-t="navAttractions">명소</a>
+      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200" href="#itineraries" data-t="navItineraries">일정 계획</a>
+      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200" href="#map" data-t="navMap">지도</a>
+      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200" href="#tips" data-t="navTips">여행 가이드</a>
+    </div>
+    
+    <!-- Controls -->
+    <div class="flex items-center gap-sm">
+      <!-- Language Selector -->
+      <div class="relative inline-block text-left">
+        <button id="lang-menu-btn" onclick="toggleLangDropdown()" class="flex items-center gap-xs text-on-surface font-label-sm text-label-sm border border-outline px-sm py-xs rounded-full hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-[18px]">language</span>
+          <span id="current-lang-code">KR</span>
+          <span class="material-symbols-outlined text-[16px]">expand_more</span>
+        </button>
+        <!-- Dropdown Menu -->
+        <div id="lang-dropdown" class="absolute right-0 mt-xs w-36 rounded-xl bg-surface-container-lowest border border-outline-variant shadow-xl hidden z-50 py-xs">
+          <button onclick="changeLanguage('ko')" class="w-full text-left px-md py-sm font-label-sm text-label-sm text-on-surface hover:bg-surface-container transition-colors flex items-center justify-between">
+            <span>한국어</span><span class="text-[10px] text-on-surface-variant font-bold">KR</span>
+          </button>
+          <button onclick="changeLanguage('en')" class="w-full text-left px-md py-sm font-label-sm text-label-sm text-on-surface hover:bg-surface-container transition-colors flex items-center justify-between">
+            <span>English</span><span class="text-[10px] text-on-surface-variant font-bold">EN</span>
+          </button>
+          <button onclick="changeLanguage('zh')" class="w-full text-left px-md py-sm font-label-sm text-label-sm text-on-surface hover:bg-surface-container transition-colors flex items-center justify-between">
+            <span>简体中文</span><span class="text-[10px] text-on-surface-variant font-bold">CN</span>
+          </button>
+          <button onclick="changeLanguage('ja')" class="w-full text-left px-md py-sm font-label-sm text-label-sm text-on-surface hover:bg-surface-container transition-colors flex items-center justify-between">
+            <span>日本語</span><span class="text-[10px] text-on-surface-variant font-bold">JP</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Search button -->
+      <button onclick="openSearchModal()" class="material-symbols-outlined text-on-surface p-xs cursor-pointer hover:text-primary rounded-full hover:bg-surface-container transition-colors">
+        search
+      </button>
+
+      <!-- Theme Switcher -->
+      <button id="theme-toggle" onclick="toggleTheme()" class="flex items-center justify-center text-on-surface p-xs rounded-full hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative h-[80vh] min-h-[550px] w-full overflow-hidden mt-16">
+    <img alt="Gyeongbokgung Palace at sunset" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApydBtEPO1LSjVIdEBJQB44XQzEZCRjX_kf5e9UGQ8ORh6uF-iWyQu9KOUqmivCCBCdgFJcHM7-5fUwH2GsGqdrNX6NpgE2753Wz0HUmLLRBHyboUkwXrgkOgIjkwZjPxgJxQ_Zj0IVJOHfncS2UsMPSVJ1YOHFDDxzWVIHikhkog3ccwKgDIdUMYURyv5mshv-g_wJ_dcrZebHQ4zZ91zuhkDojFJ36QceApDCEPWkhWZH4flJ2EFG4QOsoAg4ax5MAjgblWJxpo"/>
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-gutter">
+      <h1 class="font-display-lg text-display-lg mb-md max-w-4xl tracking-tight leading-tight noto-serif" data-t="heroTitle">
+        서울의 매력을 발견하세요
+      </h1>
+      <p class="font-body-lg text-body-lg max-w-2xl opacity-90" data-t="heroDesc">
+        과거와 미래가 공존하는 한국의 심장부, 서울로 여러분을 초대합니다.
+      </p>
+    </div>
+  </header>
+
+  <!-- Introduction Section -->
+  <section class="max-w-container-max mx-auto px-gutter py-3xl">
+    <div class="flex flex-col md:flex-row items-center gap-lg">
+      <div class="flex-1">
+        <h2 class="font-headline-lg text-headline-lg mb-md text-primary noto-serif" data-t="introTitle">역사와 미래의 공존, 서울</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed" data-t="introDesc">
+          600년의 역사를 품은 고궁과 하늘을 찌르는 마천루가 어우러진 서울은 끊임없이 변화하는 역동적인 도시입니다. 
+          전통과 현대가 완벽한 조화를 이루는 서울의 독특한 풍경 속에서 당신만의 특별한 이야기를 만들어보세요.
+        </p>
+        <div class="mt-md border-l-4 border-tertiary pl-md py-xs italic text-on-surface-variant" data-t="introQuote">
+          "Seoul: Where history breathes and the future unfolds."
+        </div>
+      </div>
+      <div class="flex-1 grid grid-cols-2 gap-sm">
+        <div class="aspect-square rounded-xl overflow-hidden shadow-md group">
+          <img alt="Hanok roof tiles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARGDEvuDDsHowIdce_2Um4AYytl47A90HKQ9dGoT-J9J4OMZHIWd8XfrdFBUYtPj-RKxRhmJ1ez4B-gWnkvslVYRR9ipyaQXSGVVd87KWGbCmyPENHoL0U6BgwVKTK7B7ntdwYqY5bZzE_4eAng_S-brIQYD9f5set3y91jAq6aZcor2QC6z2Qx6WsAfBo8cRPg7DoUZ0pcLcUxKGwU8gZtBsbdojPm2J3j7DYE_q4CoqG33d7NeLShxRFlaElOBsb0m8rGByOnP8"/>
+        </div>
+        <div class="aspect-square rounded-xl overflow-hidden shadow-md mt-lg group">
+          <img alt="Neon lights in Myeongdong" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEpxXSUxciXLKE6jT4i-3zcY4DFEBKE60gbRPIBZIQvOR4QmTamzPd7LOIi9xpsaA6V1wyr7l_w9wlnjgDTooGRaVXxw95kliId-lj0H4uLIeJMsddoNUaP-yEJ0LG-Bwk0UE2Okl95F5lmkhdbKc3t5zPmnV2QtibNxBiU3JAsFgKbeRPQp0IyP6Pr8QiFik90HO6r-l_ezkurlhRp4vQdVfAjUrmPHgxg-xyfn_sBPmI9BVZPdajMZzzJUYVCZyeao4l6-M25Es"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attractions Grid Section -->
+  <section id="attractions" class="bg-surface-container-low py-3xl">
+    <div class="max-w-container-max mx-auto px-gutter">
+      <div class="text-center mb-lg">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs noto-serif" data-t="gridTitle">서울 10대 명소</h2>
+        <p class="font-label-sm text-label-sm text-primary tracking-widest uppercase" data-t="gridSub">Top 10 Must-Visit Attractions</p>
+      </div>
+      
+      <!-- Attraction Cards Container -->
+      <div id="attractions-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-md">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Itinerary Planner Section -->
+  <section id="itineraries" class="py-3xl bg-surface">
+    <div class="max-w-container-max mx-auto px-gutter">
+      <div class="text-center mb-lg">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs noto-serif" data-t="itineraryTitle">나만의 서울 여행 일정</h2>
+        <p class="font-label-sm text-label-sm text-primary tracking-widest uppercase" data-t="itinerarySub">Design your custom travel route and save it</p>
+      </div>
+
+      <!-- Empty State -->
+      <div id="itinerary-empty-state" class="flex flex-col items-center justify-center p-2xl border border-dashed border-outline rounded-2xl max-w-xl mx-auto bg-surface-container-lowest">
+        <span class="material-symbols-outlined text-[48px] text-outline mb-md">calendar_today</span>
+        <p class="text-center text-sm text-on-surface-variant" data-t="itineraryEmpty">
+          일정에 추가된 명소가 없습니다. 위 명소 카드의 '일정에 추가' 버튼을 눌러보세요!
+        </p>
+      </div>
+
+      <!-- Planner Content -->
+      <div id="itinerary-content" class="hidden max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-lg bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant shadow-xl">
+        <!-- Day 1 List -->
+        <div class="flex flex-col">
+          <div class="flex justify-between items-center pb-sm border-b border-outline-variant/60 mb-md">
+            <h4 class="font-bold text-primary flex items-center gap-xs">
+              <span class="material-symbols-outlined text-md">explore</span>
+              <span data-t="day1">1일차 (Day 1)</span>
+            </h4>
+            <span id="day-1-summary" class="text-xs font-semibold text-on-surface-variant bg-surface-container px-sm py-xs rounded-full">Stops: 0</span>
+          </div>
+          <div id="itinerary-day-1-list" class="flex flex-col gap-sm">
+            <!-- Timeline items -->
+          </div>
+        </div>
+
+        <!-- Day 2 List -->
+        <div class="flex flex-col">
+          <div class="flex justify-between items-center pb-sm border-b border-outline-variant/60 mb-md">
+            <h4 class="font-bold text-tertiary flex items-center gap-xs">
+              <span class="material-symbols-outlined text-md">explore</span>
+              <span data-t="day2">2일차 (Day 2)</span>
+            </h4>
+            <span id="day-2-summary" class="text-xs font-semibold text-on-surface-variant bg-surface-container px-sm py-xs rounded-full">Stops: 0</span>
+          </div>
+          <div id="itinerary-day-2-list" class="flex flex-col gap-sm">
+            <!-- Timeline items -->
+          </div>
+        </div>
+
+        <!-- Controls Row -->
+        <div class="md:col-span-2 flex justify-end gap-sm border-t border-outline-variant/60 pt-md mt-md">
+          <button onclick="clearItinerary()" class="px-md py-sm bg-surface-variant hover:bg-surface-container-highest text-on-surface-variant font-bold rounded-xl text-xs transition-colors flex items-center gap-xs">
+            <span class="material-symbols-outlined text-sm">clear_all</span>
+            <span data-t="clearItinerary">일정 비우기</span>
+          </button>
+          <button onclick="downloadItineraryText()" class="px-md py-sm bg-primary hover:bg-primary-container text-on-primary font-bold rounded-xl text-xs transition-colors flex items-center gap-xs shadow-md">
+            <span class="material-symbols-outlined text-sm">download</span>
+            <span data-t="downloadItinerary">텍스트 저장</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section id="map" class="bg-surface-container-low py-3xl">
+    <div class="max-w-container-max mx-auto px-gutter">
+      <div class="text-center mb-lg">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs noto-serif" data-t="mapTitle">서울 명소 지도</h2>
+        <p class="font-label-sm text-label-sm text-primary tracking-widest uppercase" data-t="mapSub">Top 10 Must-Visit Attractions on Map</p>
+      </div>
+
+      <!-- Map Wrapper -->
+      <div id="map-container" class="relative w-full max-w-4xl mx-auto bg-surface border border-outline-variant rounded-2xl shadow-xl overflow-hidden">
+        <!-- SVG Map of Seoul (Stylized) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" class="w-full h-auto">
+          <!-- Bounding Base Shape of Seoul -->
+          <path d="M 300,120 Q 500,50 700,100 T 900,320 T 800,550 T 500,600 T 200,500 T 100,300 Z" fill="var(--surface-container-low)" stroke="var(--outline-variant)" stroke-width="2.5" opacity="0.6"/>
+          
+          <!-- Han River cutting through Seoul -->
+          <path d="M 100,450 Q 250,550 450,420 T 750,440 T 950,380" fill="none" stroke="var(--secondary-container)" stroke-width="20" stroke-linecap="round" opacity="0.75"/>
+          
+          <!-- Mountain visuals for aesthetics -->
+          <path d="M 450,90 L 480,50 L 510,90 Z" fill="var(--outline)" opacity="0.25" />
+          <path d="M 470,390 L 490,360 L 510,390 Z" fill="var(--outline)" opacity="0.25" />
+          
+          <!-- Map Labels (Interactive & Translatable) -->
+          <text x="495" y="80" class="fill-on-surface-variant/50 font-bold text-xs pointer-events-none text-center" id="map-label-bukhansan" data-t="mapBukhansan">북한산</text>
+          <text x="180" y="520" class="fill-primary/60 font-bold text-xs pointer-events-none" id="map-label-hanriver" data-t="mapHanRiver">한강</text>
+          <text x="525" y="390" class="fill-on-surface-variant/50 font-bold text-xs pointer-events-none" id="map-label-namsan" data-t="mapNamsan">남산</text>
+
+          <!-- Interactive Pins -->
+          <!-- 1. Gyeongbokgung -->
+          <g class="map-pin" data-id="gyeongbokgung" transform="translate(450, 230)" onclick="openDetailsModal('gyeongbokgung')" onmouseenter="showMapTooltip(event, 'gyeongbokgung')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 2. N Seoul Tower -->
+          <g class="map-pin" data-id="nseoultower" transform="translate(490, 380)" onclick="openDetailsModal('nseoultower')" onmouseenter="showMapTooltip(event, 'nseoultower')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 3. Bukchon Hanok -->
+          <g class="map-pin" data-id="bukchon" transform="translate(485, 200)" onclick="openDetailsModal('bukchon')" onmouseenter="showMapTooltip(event, 'bukchon')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 4. Myeongdong -->
+          <g class="map-pin" data-id="myeongdong" transform="translate(460, 310)" onclick="openDetailsModal('myeongdong')" onmouseenter="showMapTooltip(event, 'myeongdong')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 5. Lotte World Tower -->
+          <g class="map-pin" data-id="lotteworldtower" transform="translate(750, 480)" onclick="openDetailsModal('lotteworldtower')" onmouseenter="showMapTooltip(event, 'lotteworldtower')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 6. DDP -->
+          <g class="map-pin" data-id="ddp" transform="translate(540, 290)" onclick="openDetailsModal('ddp')" onmouseenter="showMapTooltip(event, 'ddp')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 7. Han River Park -->
+          <g class="map-pin" data-id="hanriver" transform="translate(300, 480)" onclick="openDetailsModal('hanriver')" onmouseenter="showMapTooltip(event, 'hanriver')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 8. Insadong -->
+          <g class="map-pin" data-id="insadong" transform="translate(500, 245)" onclick="openDetailsModal('insadong')" onmouseenter="showMapTooltip(event, 'insadong')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 9. Namdaemun Market -->
+          <g class="map-pin" data-id="namdaemun" transform="translate(425, 315)" onclick="openDetailsModal('namdaemun')" onmouseenter="showMapTooltip(event, 'namdaemun')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+          <!-- 10. Cheonggyecheon -->
+          <g class="map-pin" data-id="cheonggyecheon" transform="translate(520, 265)" onclick="openDetailsModal('cheonggyecheon')" onmouseenter="showMapTooltip(event, 'cheonggyecheon')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+            <circle r="16" class="fill-primary/20 pin-ripple" />
+            <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
+          </g>
+        </svg>
+
+        <!-- Floating Tooltip Container -->
+        <div id="map-tooltip" class="absolute pointer-events-none bg-surface-container-lowest border border-outline-variant shadow-2xl rounded-2xl p-sm hidden flex items-center gap-md z-30 transition-opacity duration-200 w-[240px]">
+          <img id="tooltip-img" class="w-12 h-12 object-cover rounded-lg" src="" alt="">
+          <div class="min-w-0">
+            <h4 id="tooltip-title" class="font-bold text-xs text-on-surface truncate"></h4>
+            <p id="tooltip-category" class="text-[10px] text-on-surface-variant font-semibold mt-[2px] uppercase"></p>
+            <div class="flex items-center text-tertiary text-xs mt-[2px] font-bold">
+              <span class="material-symbols-outlined text-[12px] mr-[2px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span id="tooltip-rating"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Tips Accordion Section -->
+  <section id="tips" class="max-w-container-max mx-auto px-gutter py-3xl">
+    <div class="text-center mb-lg">
+      <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs noto-serif" data-t="tipsTitle">서울 여행 정보 & 팁</h2>
+      <p class="font-label-sm text-label-sm text-primary tracking-widest uppercase" data-t="tipsSub">Essential Guide for Travelers</p>
+    </div>
+    
+    <!-- Accordion Wrapper -->
+    <div class="max-w-3xl mx-auto space-y-md">
+      <!-- Tip 1 -->
+      <div class="border border-outline-variant/60 rounded-2xl overflow-hidden bg-surface-container-low transition-all">
+        <button onclick="toggleAccordion(1)" class="w-full flex justify-between items-center px-lg py-md font-bold text-on-surface text-left hover:bg-surface-container-high transition-colors">
+          <span data-t="tip1Header">🚍 대중교통 및 T-money</span>
+          <span id="accordion-icon-1" class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+        </button>
+        <div id="accordion-content-1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+          <p class="px-lg pb-md pt-sm text-sm text-on-surface-variant leading-relaxed" data-t="tip1Body">
+            서울의 대중교통은 지하철과 버스 간 환승 할인이 적용되어 매우 저렴합니다. 편의점이나 역사 내 자판기에서 'T-money' 카드를 구매하고 충전하여 가볍게 태그하고 타세요.
+          </p>
+        </div>
+      </div>
+      <!-- Tip 2 -->
+      <div class="border border-outline-variant/60 rounded-2xl overflow-hidden bg-surface-container-low transition-all">
+        <button onclick="toggleAccordion(2)" class="w-full flex justify-between items-center px-lg py-md font-bold text-on-surface text-left hover:bg-surface-container-high transition-colors">
+          <span data-t="tip2Header">📱 필수의 모바일 앱</span>
+          <span id="accordion-icon-2" class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+        </button>
+        <div id="accordion-content-2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+          <p class="px-lg pb-md pt-sm text-sm text-on-surface-variant leading-relaxed" data-t="tip2Body">
+            한국에서는 구글 맵 대신 '네이버 지도(Naver Map)' 또는 '카카오맵'을 다운로드해 도보 및 길찾기를 이용하세요. 번역이 필요하면 '파파고(Papago)'를 이용해 한국인과 원활하게 대화할 수 있고, 택시는 '카카오 T(Kakao T)' 앱이 유용합니다.
+          </p>
+        </div>
+      </div>
+      <!-- Tip 3 -->
+      <div class="border border-outline-variant/60 rounded-2xl overflow-hidden bg-surface-container-low transition-all">
+        <button onclick="toggleAccordion(3)" class="w-full flex justify-between items-center px-lg py-md font-bold text-on-surface text-left hover:bg-surface-container-high transition-colors">
+          <span data-t="tip3Header">💰 결제 및 텍스 리펀</span>
+          <span id="accordion-icon-3" class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+        </button>
+        <div id="accordion-content-3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+          <p class="px-lg pb-md pt-sm text-sm text-on-surface-variant leading-relaxed" data-t="tip3Body">
+            거의 모든 가맹점, 식당, 심지어 택시에서도 신용카드를 전적으로 허용합니다. 다만 현지 전통시장이나 교통카드 잔액 충전 시 소액 현금(원화)이 유용합니다. 외국인 관광객은 주요 샵에서 즉시 텍스 리펀을 신청할 수 있습니다.
+          </p>
+        </div>
+      </div>
+      <!-- Tip 4 -->
+      <div class="border border-outline-variant/60 rounded-2xl overflow-hidden bg-surface-container-low transition-all">
+        <button onclick="toggleAccordion(4)" class="w-full flex justify-between items-center px-lg py-md font-bold text-on-surface text-left hover:bg-surface-container-high transition-colors">
+          <span data-t="tip4Header">🚨 응급 조치 및 무료 통역</span>
+          <span id="accordion-icon-4" class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+        </button>
+        <div id="accordion-content-4" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+          <p class="px-lg pb-md pt-sm text-sm text-on-surface-variant leading-relaxed" data-t="tip4Body">
+            화재나 환자 발생 등 응급전화는 119, 범죄 신고는 112로 전화하세요. 통역이나 관광 가이드가 실시간으로 필요할 경우 1330(관광 안내 전화)을 이용하면 24시간 한국어/영어/일어/중국어 통역 서비스를 연결받을 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multilingual Section -->
+  <section class="py-3xl bg-surface">
+    <div class="max-w-container-max mx-auto px-gutter text-center">
+      <span class="material-symbols-outlined text-primary text-[48px] mb-md">translate</span>
+      <h2 class="font-headline-lg text-headline-lg mb-md noto-serif" data-t="langTitle">다국어 지원 서비스</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mb-lg" data-t="langDesc">
+        서울 디스커버리는 전 세계 방문객들을 위해 4개 국어를 지원합니다. 
+        당신에게 가장 익숙한 언어로 서울의 구석구석을 탐험하세요.
+      </p>
+      
+      <!-- Instant Switching Badges -->
+      <div class="flex flex-wrap justify-center gap-md">
+        <button onclick="changeLanguage('ko')" class="px-lg py-sm border border-outline-variant rounded-xl flex flex-col items-center hover:bg-surface-container transition-all">
+          <span class="font-bold text-primary mb-xs">KR</span>
+          <span class="font-label-sm text-label-sm">한국어</span>
+        </button>
+        <button onclick="changeLanguage('en')" class="px-lg py-sm border border-outline-variant rounded-xl flex flex-col items-center hover:bg-surface-container transition-all">
+          <span class="font-bold text-primary mb-xs">EN</span>
+          <span class="font-label-sm text-label-sm">English</span>
+        </button>
+        <button onclick="changeLanguage('zh')" class="px-lg py-sm border border-outline-variant rounded-xl flex flex-col items-center hover:bg-surface-container transition-all">
+          <span class="font-bold text-primary mb-xs">CN</span>
+          <span class="font-label-sm text-label-sm">简体中文</span>
+        </button>
+        <button onclick="changeLanguage('ja')" class="px-lg py-sm border border-outline-variant rounded-xl flex flex-col items-center hover:bg-surface-container transition-all">
+          <span class="font-bold text-primary mb-xs">JP</span>
+          <span class="font-label-sm text-label-sm">日本語</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Component -->
+  <footer class="w-full py-lg px-gutter max-w-container-max mx-auto mt-auto flex flex-col md:flex-row justify-between items-start gap-md bg-surface border-t border-outline-variant/60">
+    <div class="flex flex-col gap-sm">
+      <div class="font-headline-md text-headline-md text-on-surface font-bold">Seoul Discovery</div>
+      <p class="font-label-sm text-label-sm text-on-surface-variant max-w-xs" data-t="footerPortal">
+        Official Discovery Portal for Seoul's Premier Attractions and Cultural Heritage.
+      </p>
+      <p class="font-label-sm text-label-sm text-on-surface-variant mt-md" data-t="footerRights">© 2024 Seoul Metropolitan Government. All rights reserved.</p>
+    </div>
+    
+    <!-- Links -->
+    <div class="grid grid-cols-2 gap-x-lg gap-y-sm">
+      <button onclick="openModal('privacy-modal')" class="text-left text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" data-t="footerPrivacy">Privacy Policy</button>
+      <button onclick="openModal('terms-modal')" class="text-left text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" data-t="footerTerms">Terms of Service</button>
+      <button onclick="openModal('contact-modal')" class="text-left text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" data-t="footerContact">Contact Us</button>
+      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" href="https://korean.visitseoul.net/index" target="_blank" data-t="footerOfficial">Official Tourism Portal</a>
+    </div>
+    
+    <!-- Socials & Share -->
+    <div class="flex gap-sm">
+      <span onclick="copyURL()" title="Copy website link" class="material-symbols-outlined text-primary cursor-pointer p-xs hover:bg-surface-container-high rounded-full transition-colors">public</span>
+      <span onclick="sharePortal()" title="Share website" class="material-symbols-outlined text-primary cursor-pointer p-xs hover:bg-surface-container-high rounded-full transition-colors">share</span>
+      <span onclick="openModal('contact-modal')" title="Mail team" class="material-symbols-outlined text-primary cursor-pointer p-xs hover:bg-surface-container-high rounded-full transition-colors">mail</span>
+    </div>
+  </footer>
+
+  <!-- ================= MODALS & POPUPS ================= -->
+
+  <!-- 1. Attraction Details Modal -->
+  <div id="details-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md hidden">
+    <!-- Modal Box -->
+    <div id="details-card" class="bg-surface-container-lowest text-on-surface max-w-4xl w-full mx-4 rounded-2xl shadow-2xl border border-outline-variant overflow-hidden flex flex-col md:flex-row max-h-[90vh] md:max-h-[85vh] transition-all duration-300 scale-95 opacity-0">
+      
+      <!-- Left Side (Hero Image/Badge) -->
+      <div class="md:w-5/12 h-64 md:h-auto relative overflow-hidden shrink-0">
+        <img id="modal-img" class="w-full h-full object-cover" src="" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-md left-md flex flex-wrap gap-xs items-center">
+          <span id="modal-category" class="bg-primary text-on-primary text-[10px] px-sm py-xs rounded-full font-bold uppercase tracking-wider"></span>
+          <span class="bg-surface/90 text-tertiary text-[11px] px-sm py-xs rounded-full font-bold flex items-center gap-[2px]">
+            <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span id="modal-rating"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Side (Scroller Content) -->
+      <div class="flex-1 flex flex-col p-lg overflow-y-auto">
+        <div class="flex justify-between items-start mb-md">
+          <div>
+            <h3 id="modal-title" class="font-headline-md text-2xl font-bold noto-serif leading-tight text-on-surface"></h3>
+            <p id="modal-subtitle" class="text-sm text-on-surface-variant font-medium mt-[2px]"></p>
+          </div>
+          <button onclick="closeDetailsModal()" class="material-symbols-outlined text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container p-xs transition-colors">close</button>
+        </div>
+
+        <p id="modal-desc" class="text-sm text-on-surface-variant leading-relaxed mb-lg border-b border-outline-variant/60 pb-md"></p>
+
+        <!-- Practical Details Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-md mb-lg">
+          <div class="flex gap-sm">
+            <span class="material-symbols-outlined text-primary text-lg">location_on</span>
+            <div class="min-w-0">
+              <h5 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider" data-t="addressLabel">주소</h5>
+              <p id="modal-addr-val" class="text-xs font-semibold text-on-surface mt-[2px] leading-relaxed break-keep"></p>
+            </div>
+          </div>
+          <div class="flex gap-sm">
+            <span class="material-symbols-outlined text-primary text-lg">schedule</span>
+            <div class="min-w-0">
+              <h5 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider" data-t="hoursLabel">운영 시간</h5>
+              <p id="modal-hours-val" class="text-xs font-semibold text-on-surface mt-[2px] leading-relaxed"></p>
+            </div>
+          </div>
+          <div class="flex gap-sm">
+            <span class="material-symbols-outlined text-primary text-lg">payments</span>
+            <div class="min-w-0">
+              <h5 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider" data-t="feeLabel">입장료</h5>
+              <p id="modal-fee-val" class="text-xs font-semibold text-on-surface mt-[2px] leading-relaxed"></p>
+            </div>
+          </div>
+          <div class="flex gap-sm">
+            <span class="material-symbols-outlined text-primary text-lg">subway</span>
+            <div class="min-w-0">
+              <h5 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider" data-t="metroLabel">대중교통</h5>
+              <p id="modal-metro-val" class="text-xs font-semibold text-on-surface mt-[2px] leading-relaxed break-keep"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button Actions -->
+        <div class="flex flex-wrap gap-sm mt-auto pt-md border-t border-outline-variant/60">
+          <button id="modal-itinerary-btn" class="flex-1 px-md py-sm bg-primary text-on-primary font-bold rounded-xl text-xs hover:bg-primary-container transition-colors flex items-center justify-center gap-xs shadow-md">
+            <span class="material-symbols-outlined text-sm">calendar_add-on</span>
+            <span data-t="addToItineraryBtn">일정에 추가</span>
+          </button>
+          <button id="modal-map-btn" class="flex-1 px-md py-sm bg-secondary-container text-on-secondary-container font-bold rounded-xl text-xs hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-xs">
+            <span class="material-symbols-outlined text-sm">explore</span>
+            <span data-t="viewOnMapBtn">지도에서 보기</span>
+          </button>
+          <button onclick="closeDetailsModal()" class="px-md py-sm border border-outline text-on-surface-variant font-bold rounded-xl text-xs hover:bg-surface-container transition-colors flex items-center justify-center" data-t="closeBtn">
+            닫기
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Search Modal Overlay -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-[10vh] hidden">
+    <!-- Box -->
+    <div id="search-card" class="bg-surface-container-lowest text-on-surface rounded-2xl w-full max-w-2xl mx-4 shadow-2xl border border-outline-variant overflow-hidden transform scale-95 opacity-0 transition-all duration-300">
+      <div class="flex items-center px-md py-sm border-b border-outline-variant gap-sm bg-surface-container-low">
+        <span class="material-symbols-outlined text-on-surface-variant text-2xl">search</span>
+        <input type="text" id="search-input" oninput="performSearch()" class="w-full bg-transparent border-0 outline-none focus:ring-0 text-body-md text-on-surface placeholder-on-surface-variant" placeholder="명소를 검색해보세요..." data-t-placeholder="searchPlaceholder">
+        <button onclick="closeSearchModal()" class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer p-xs hover:bg-surface-container-high rounded-full transition-colors">close</button>
+      </div>
+      <div id="search-results" class="max-h-[50vh] overflow-y-auto p-md flex flex-col gap-sm">
+        <div class="text-center py-lg text-on-surface-variant text-sm" data-t="searchPlaceholder">
+          가고 싶은 명소를 검색하세요...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Day Selector Dialog -->
+  <div id="day-select-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/55 backdrop-blur-sm hidden">
+    <!-- Dialog Card -->
+    <div id="day-select-card" class="bg-surface-container-lowest text-on-surface rounded-2xl p-lg max-w-sm w-full mx-4 shadow-2xl border border-outline-variant scale-90 opacity-0 transition-all duration-300 transform">
+      <h3 class="font-headline-md text-lg font-bold mb-md text-center text-primary" id="day-select-title" data-t="addToItineraryBtn">일정 추가</h3>
+      <p class="text-sm text-on-surface-variant text-center mb-lg" id="day-select-prompt" data-t="selectDayPrompt">명소를 몇 일차에 추가하시겠습니까?</p>
+      <div class="flex flex-col gap-sm">
+        <button onclick="confirmAddToItinerary(1)" class="w-full py-sm bg-primary text-on-primary font-bold rounded-xl hover:bg-primary-container transition-colors flex items-center justify-center gap-xs" id="day-select-1">
+          <span class="material-symbols-outlined text-sm">filter_1</span> <span data-t="day1">1일차 (Day 1)</span>
+        </button>
+        <button onclick="confirmAddToItinerary(2)" class="w-full py-sm bg-secondary-container text-on-secondary-container font-bold rounded-xl hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-xs" id="day-select-2">
+          <span class="material-symbols-outlined text-sm">filter_2</span> <span data-t="day2">2일차 (Day 2)</span>
+        </button>
+        <button onclick="closeDaySelectModal()" class="w-full py-sm border border-outline text-on-surface-variant rounded-xl hover:bg-surface-container transition-colors font-bold" data-t="closeBtn">
+          닫기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Contact Us Form Modal -->
+  <div id="contact-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden">
+    <div class="bg-surface-container-lowest text-on-surface rounded-2xl p-lg max-w-md w-full mx-4 shadow-2xl border border-outline-variant">
+      <div class="flex justify-between items-start mb-md">
+        <h3 class="font-headline-md text-xl font-bold text-primary" id="contact-title" data-t="contactTitle">서울 디스커버리에 문의하기</h3>
+        <button onclick="closeModal('contact-modal')" class="material-symbols-outlined text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container p-xs transition-colors">close</button>
+      </div>
+      <form onsubmit="submitContactForm(event)" class="space-y-md">
+        <div>
+          <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-xs" id="contact-name-label" data-t="contactName">이름</label>
+          <input type="text" required class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-sm">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-xs" id="contact-email-label" data-t="contactEmail">이메일</label>
+          <input type="email" required class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-sm">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-xs" id="contact-msg-label" data-t="contactMsg">메시지</label>
+          <textarea required rows="4" class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-sm"></textarea>
+        </div>
+        <div class="flex gap-sm pt-sm">
+          <button type="submit" class="flex-1 py-sm bg-primary text-on-primary font-bold rounded-xl text-xs hover:bg-primary-container transition-colors shadow-md" id="contact-send-btn" data-t="contactSend">전송하기</button>
+          <button type="button" onclick="closeModal('contact-modal')" class="px-md py-sm border border-outline text-on-surface-variant font-bold rounded-xl text-xs hover:bg-surface-container transition-colors" data-t="closeBtn">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Privacy Policy Modal -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden">
+    <div class="bg-surface-container-lowest text-on-surface rounded-2xl p-lg max-w-lg w-full mx-4 shadow-2xl border border-outline-variant max-h-[75vh] overflow-y-auto">
+      <h3 class="font-headline-md text-xl font-bold mb-md text-primary" data-t="footerPrivacy">개인정보 처리방침</h3>
+      <div class="text-sm text-on-surface-variant space-y-md leading-relaxed">
+        <p class="font-semibold text-on-surface">서울 디스커버리 서비스는 방문자의 프라이버시를 매우 존중합니다.</p>
+        <p><strong>1. 데이터 보관:</strong> 당사는 서버에 어떠한 개인 식별 데이터도 저장하지 않습니다. 사용자가 입력하거나 수정한 모든 여행 계획(일정) 및 사이트 설정(언어, 테마)은 브라우저 내의 안전한 <strong>로컬 저장소(localStorage)</strong>에만 보관됩니다.</p>
+        <p><strong>2. 타사 라이브러리:</strong> 본 사이트는 디자인과 번역을 위해 구글 폰트, 머티리얼 심볼, Tailwind CSS 및 이미지 주소를 활용하며, 이를 제외한 다른 사용자 추적 스크립트는 존재하지 않습니다.</p>
+      </div>
+      <button onclick="closeModal('privacy-modal')" class="mt-lg w-full py-sm bg-primary text-on-primary font-bold rounded-xl text-xs hover:bg-primary-container transition-colors" data-t="closeBtn">닫기 Close</button>
+    </div>
+  </div>
+
+  <!-- 6. Terms of Service Modal -->
+  <div id="terms-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden">
+    <div class="bg-surface-container-lowest text-on-surface rounded-2xl p-lg max-w-lg w-full mx-4 shadow-2xl border border-outline-variant max-h-[75vh] overflow-y-auto">
+      <h3 class="font-headline-md text-xl font-bold mb-md text-primary" data-t="footerTerms">이용약관</h3>
+      <div class="text-sm text-on-surface-variant space-y-md leading-relaxed">
+        <p class="font-semibold text-on-surface">본 포털의 이용 조건에 관한 중요 공지사항입니다.</p>
+        <p><strong>1. 정보 제공:</strong> 당사 사이트에서 제공되는 서울의 대표 명소 정보(영업 시간, 요금, 대중교통)는 정기적인 가이드북 데이터를 준용하나 현지 관공서나 랜드마크의 운영 사정에 따라 변경될 수 있습니다. 중요한 여행 전 공식 홈페이지나 대중교통 실시간 노선도를 다시 한 번 점검해 주십시오.</p>
+        <p><strong>2. 사용 제한:</strong> 사이트 내 콘텐츠와 스타일 시트, 일정 추출 기능을 개인 및 비상업적 용도로 사용하는 것을 무료로 전면 허용합니다.</p>
+      </div>
+      <button onclick="closeModal('terms-modal')" class="mt-lg w-full py-sm bg-primary text-on-primary font-bold rounded-xl text-xs hover:bg-primary-container transition-colors" data-t="closeBtn">닫기 Close</button>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications System -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-[80] flex flex-col gap-sm pointer-events-none"></div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // ----------------------------------------------------
+    // DATA LAYER & TRANSLATIONS DATABASE
+    // ----------------------------------------------------
+    const ATTRACTION_DATA = [
+      {
+        id: "gyeongbokgung",
+        rating: 4.9,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAFV6wSiw2T6oBlsXPT28o4VvUUC02yluhylApytofyuGC05O5UtFl5_yguYe9CPVRbMs0ollIa06BW4tzeWWcqMhriiHehjFs1HU8ZifX9NdVUnpJYhCSnKBm_CMdQzeY8ey9DH-fSZ8HcFtHjRX1zMvrjj3v_Ud0B-DpD_YNwZ-GUkaeuD4U-g2Bcb3gQ2jS3wmwbLclWyaoNDwOp4bEPDOpMKDp1gfL1hhdp6O1FuSsTUWbRmMofeewmFASUVahWU9Z3miBUHVE",
+        category: { ko: "역사/문화", en: "History/Culture", zh: "历史/文化", ja: "歴史・文化" },
+        title: { ko: "경복궁", en: "Gyeongbokgung Palace", zh: "景福宫", ja: "景福宮 (キョンボックン)" },
+        subtitle: { ko: "조선 왕조의 법궁", en: "Main Palace of Joseon Dynasty", zh: "朝鲜王朝的正宫", ja: "朝鮮王朝の正宮" },
+        desc: {
+          ko: "조선 왕조의 법궁으로, 1395년에 창건되었습니다. 서울에서 가장 크고 웅장한 궁궐로 근정전과 경회루가 대표적입니다. 한복을 착용하면 무료 입장이 가능합니다.",
+          en: "The main royal palace of the Joseon Dynasty, built in 1395. It is the largest and most grand of the five palaces in Seoul, famous for Geunjeongjeon and Gyeonghoeru Pavilion. Free entry if wearing Hanbok.",
+          zh: "建于1395年的朝鲜王朝正宫。它是首尔五大宫殿中规模最大、最雄伟的一座，以勤政殿和庆会楼闻名。穿着韩服可免费入场。",
+          ja: "1395年に創建された朝鮮王朝の正宮です。ソウルにある5大王宮の中で最も規模が大きく、勤政殿や慶会楼が代表的です。韓服（ハンボク）を着用すると入場料が無料になります。"
+        },
+        address: { ko: "서울특별시 종로구 사직로 161", en: "161 Sajik-ro, Jongno-gu, Seoul", zh: "首尔特别市钟路区社稷路161", ja: "ソウル特別市鐘路区社稷路161" },
+        hours: { ko: "09:00 - 17:00/18:30 (화요일 휴무)", en: "09:00 - 17:00/18:30 (Closed on Tuesdays)", zh: "09:00 - 17:00/18:30 (每周二闭馆)", ja: "09:00 - 17:00/18:30 (毎週火曜日休み)" },
+        fee: { ko: "3,000원 (한복 착용 시 무료)", en: "3,000 KRW (Free if wearing Hanbok)", zh: "3,000韩元 (穿韩服免费)", ja: "3,000ウォン (韓服着用時は無料)" },
+        metro: { ko: "3호선 경복궁역 5번 출구 바로 연결", en: "Line 3 Gyeongbokgung Stn. Exit 5 (Direct connection)", zh: "地铁3号线景福宫站5号出口直接连接", ja: "地下鉄3号線景福宮駅5番出口直結" }
+      },
+      {
+        id: "nseoultower",
+        rating: 4.8,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDZSLxCaHPqXv0zQupaLAHOHPZ-RLMR_Rtg0dSR0bgkGkkfFiTK0OWipPz6T7y_i_xKAs_ZfDEL6IkBdpXAwFTWO5EozW7HRZ-WS7MmB2PEFRIKaFqJ54LnR9mRmMYyXqKsSAVK1yN5kHxNbRX8nfwA3cuB2USf4dHQBEl6Tez9f3BsatALd4OFoFZJeW7BYPMwvdXwFh1fXpH0NY8G3BOtmHTMkvypmFon6FwnQWogunIxgTCtQ54rGkSWMSV0dWojZl1yDCMzVIE",
+        category: { ko: "랜드마크/전망대", en: "Landmark/Observatory", zh: "地标/展望台", ja: "ランドマーク・展望台" },
+        title: { ko: "N서울타워", en: "N Seoul Tower", zh: "N首尔塔", ja: "Nソウルタワー" },
+        subtitle: { ko: "서울 하늘 아래 첫 동네", en: "Seoul's Iconic Skyline Landmark", zh: "首尔天际线的标志性地标", ja: "ソウルの街を一望できるランドマーク" },
+        desc: {
+          ko: "남산 정상에 위치하여 서울 시내를 360도로 한눈에 조망할 수 있는 서울의 대표 랜드마크입니다. 사랑의 자물쇠와 아름다운 야경으로 유명합니다.",
+          en: "Located at the top of Namsan Mountain, this iconic landmark offers a 360-degree panoramic view of Seoul. Famous for its love locks and stunning night views.",
+          zh: "位于南山山顶的首尔代表性地标，可将首尔市区360度全景尽收眼底。以爱情锁墙和美丽的夜景闻名。",
+          ja: "南山の山頂に位置し、ソウル市内を360度見渡すことができるソウルの代表的なランドマークです。愛の南京錠や美しい夜景で有名です。"
+        },
+        address: { ko: "서울특별시 용산구 남산공원길 105", en: "105 Namsangongwon-gil, Yongsan-gu, Seoul", zh: "首尔特别市龙山区南山公园路105", ja: "ソウル特別市龍山区南山公園路105" },
+        hours: { ko: "10:00 - 23:00 (주말/공휴일 기준)", en: "10:00 - 23:00 (Weekends/Holidays)", zh: "10:00 - 23:00 (周末/公休日)", ja: "10:00 - 23:00 (週末・祝日基準)" },
+        fee: { ko: "전망대 21,000원", en: "Observatory: 21,000 KRW", zh: "展望台 21,000韩元", ja: "展望台 21,000ウォン" },
+        metro: { ko: "4호선 명동역 3번 출구에서 순환버스 01번 이용", en: "Line 4 Myeongdong Stn. Exit 3, then Cable Car or Bus 01", zh: "地铁4号线明洞站3号出口换乘循环巴士01路", ja: "地下鉄4号線明洞駅3番出口から循環バス01番利用" }
+      },
+      {
+        id: "bukchon",
+        rating: 4.7,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC2uG-70olXXFxuYnAxVcgzXq6jEfAi-ka1E59oRV5NrMRHsRE6qnFW8vndVcdHD8oflQ_kS2i9IwuDUlCkDP6F7egrugipAjOmU6KZoQ7rgObcpz-dfVPHwhWOTZUL9H8H7zMoF60BwcIPLlsQ320O23a4MQHSJKt1eV1Io8R6kA9QTyiJg62iBZ26_eajUmHsV-XYsk2fY_FNuQPbVBYY7pzXPb57do6GLD-s9DjvT7PSeKcaxUhMggTDX87bJT8gT2Gz7LBcNow",
+        category: { ko: "전통마을", en: "Traditional Village", zh: "传统村落", ja: "伝統村" },
+        title: { ko: "북촌 한옥마을", en: "Bukchon Hanok Village", zh: "北村韩屋村", ja: "北村韓屋村" },
+        subtitle: { ko: "골목길 사이 흐르는 역사", en: "Living History in Alleys", zh: "胡同里的活着历史", ja: "歴史の息吹を感じる路地" },
+        desc: {
+          ko: "경복궁과 창덕궁 사이에 위치한 실제 주민들이 거주하는 한옥 밀집 지역입니다. 좁은 골목길을 따라 펼쳐지는 기와지붕의 물결이 고즈넉한 아름다움을 선사합니다.",
+          en: "A traditional residential area nestled between Gyeongbokgung and Changdeokgung palaces. Walk along the narrow alleys lined with traditional Korean houses (Hanok) to experience the historic charm.",
+          zh: "位于景福宫和昌德宫之间的传统韩屋密集区，至今仍有居民在此居住。沿着狭窄的胡同，青瓦屋顶起伏，展现出幽静古朴的美感。",
+          ja: "景福宮と昌徳宮の間に位置する、実際に住民が暮らす韓屋の密集地域です。狭い路地に沿って広がる瓦屋根の波が、静かで落ち着いた美しさを届けてくれます。"
+        },
+        address: { ko: "서울특별시 종로구 계동길 37", en: "37 Gyedong-gil, Jongno-gu, Seoul", zh: "首尔特别市钟路区桂洞街37", ja: "ソウル特別市鐘路区桂洞ギル37" },
+        hours: { ko: "10:00 - 17:00 (일요일 휴무 / 주민 보호)", en: "10:00 - 17:00 (Closed on Sundays for residents)", zh: "10:00 - 17:00 (周日休息 / 居民生活保护)", ja: "10:00 - 17:00 (日曜日休み / 住民生活保護のため)" },
+        fee: { ko: "무료 (주거지이므로 정숙 필요)", en: "Free (Residential area, please keep quiet)", zh: "免费 (实际居住区，请保持安静)", ja: "無料 (居住地域のため静粛にお願いします)" },
+        metro: { ko: "3호선 안국역 2번 출구에서 도보 10분", en: "Line 3 Anguk Stn. Exit 2, 10-min walk", zh: "地铁3号线安国站2号出口步行10分钟", ja: "地下鉄3号線安国駅2番出口から徒歩10分" }
+      },
+      {
+        id: "myeongdong",
+        rating: 4.6,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuASs8WbgAZGpJovBt3cXNdws28xg0UvowhIax1hR012odMb1mxm2SOX4jISOwrvHBKXU8-SwYggdC6AiyPri40RKRpKUWexqsIsCD_IryIj5mbs9sp-0F_eaN7Wouc9HRK0RMowlyZGzj1BMiwkW8W6dGn6lUfb4IHdj6zAmJnOKUE3EpFXAYuX8NOIDk_XyfX6a939qY4lhJftSapGoMm2G5DtnSnGYue60kOPAq_8uHHzX504NHCaJcTLXlWX82ym8C_kf8BV8Qw",
+        category: { ko: "쇼핑/패션", en: "Shopping/Fashion", zh: "购物/时尚", ja: "ショッピング・ファッション" },
+        title: { ko: "명동", en: "Myeong-dong", zh: "明洞", ja: "明洞 (ミョンドン)" },
+        subtitle: { ko: "쇼핑과 길거리 음식의 메카", en: "The Mecca of Street Food & Shopping", zh: "街头美食与购物圣地", ja: "ショッピングと屋台グルメのメッカ" },
+        desc: {
+          ko: "다양한 글로벌 브랜드 매장, 화장품 숍, 그리고 길거리 음식이 가득한 서울 최고의 쇼핑가이자 트렌드의 중심지입니다. 명동성당도 함께 방문하기 좋습니다.",
+          en: "Seoul's premier shopping district filled with global brand stores, cosmetics shops, and diverse street food. The nearby Myeongdong Cathedral is also a must-visit.",
+          zh: "汇集了各种国际品牌店、化妆品店和丰富的街头美食，是首尔首屈一指的购物街和潮流中心。附近的明洞大教堂也非常值得顺道一游。",
+          ja: "様々なグローバルブランドのショップ、化粧品店、그리고屋台グルメがあふれるソウル最高のショッピング街であり、トレンドの中心地です。明洞聖堂も一緒に訪れるのにおすすめです。"
+        },
+        address: { ko: "서울특별시 중구 명동길 일대", en: "Myeongdong-gil, Jung-gu, Seoul", zh: "首尔特别市中区明洞街一带", ja: "ソウル特別市中区明洞街一帯" },
+        hours: { ko: "24시간 운영 (상점마다 다름, 보통 10:00 - 22:00)", en: "24 Hours (Individual shop hours vary, typically 10:00 - 22:00)", zh: "24小时 (店铺营业时间各异，通常为10:00 - 22:00)", ja: "24時間 (店舗により営業時間は異なり、通常10:00 - 22:00)" },
+        fee: { ko: "무료", en: "Free", zh: "免费", ja: "無料" },
+        metro: { ko: "4호선 명동역 6번 출구 또는 2호선 을지로입구역 6번 출구", en: "Line 4 Myeongdong Stn. Exit 6 OR Line 2 Euljiro 1-ga Stn. Exit 6", zh: "地铁4号线明洞站6号出口，或2号线乙支路入口站6号出口", ja: "地下鉄4号線明洞駅6番出口、または2号線乙支路入口駅6番出口" }
+      },
+      {
+        id: "lotteworldtower",
+        rating: 4.8,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBzJuUe1oHfncK8z_wUQ3wtdDK8NGRcm7twcU1xyNR0Ad1ovhOGn6ShG4rI82Il4LsX0HHUQQUCBKOm2YowVKYVTVwuTlJJbXa80k2aWyaqtx_C5rWbL9ubicg8TjrabBhbtFz3cMheXq99rsG8W88zy3XOzoQv8ADIhlPwaG5ikFFYZgfIhqzWvUzOOe3HUI8G9J2ca9QbrhzgSUTKd9bBk1FCCUYbtmdcKvLjnQqCcv2_3iW7_OTEIliPgohwK3CN6aSZTI_wAZQ",
+        category: { ko: "랜드마크/전망대", en: "Landmark/Observatory", zh: "地标/展望台", ja: "ランドマーク・展望台" },
+        title: { ko: "롯데월드타워", en: "Lotte World Tower", zh: "乐天世界塔", ja: "ロッテワールドタワー" },
+        subtitle: { ko: "세계를 내려다보는 아찔한 뷰", en: "Stunning Views Over the City", zh: "俯瞰世界的壮丽景色", ja: "世界を見下ろす圧倒的なビュー" },
+        desc: {
+          ko: "높이 555m, 123층으로 세계에서 5번째로 높은 초고층 빌딩입니다. 117층~123층에 위치한 '서울스카이' 전망대에서 아찔한 스릴과 한강 뷰를 감상할 수 있습니다.",
+          en: "Standing at 555 meters with 123 floors, it is the 5th tallest building in the world. The 'Seoul Sky' observatory on floors 117-123 offers breathtaking panoramic views of the Han River and city skyline.",
+          zh: "高555米、共123层，是世界第五高楼。在位于117层至123层的“首尔天空(Seoul Sky)”展望台，可以体验惊险刺激的感觉并欣赏汉江美景。",
+          ja: "高さ555m、123階建てで、世界で5番目に高い超高層ビルです。117階〜123階にある「ソウルスカイ」展望台から、スリリングな体験と素晴らしい漢江の景色を楽しむことができます。"
+        },
+        address: { ko: "서울특별시 송파구 올림픽로 300", en: "300 Olympic-ro, Songpa-gu, Seoul", zh: "首尔特别市松坡区奥林匹克路300", ja: "ソウル特別市松坡区オリンピック路300" },
+        hours: { ko: "10:30 - 22:00 (금/토 23:00)", en: "10:30 - 22:00 (Fri/Sat until 23:00)", zh: "10:30 - 22:00 (周五/周六至23:00)", ja: "10:30 - 22:00 (金・土は23:00まで)" },
+        fee: { ko: "서울스카이 입장권 29,000원", en: "Seoul Sky Ticket: 29,000 KRW", zh: "首尔天空门票 29,000韩元", ja: "ソウルスカイ入場券 29,000ウォン" },
+        metro: { ko: "2호선/8호선 잠실역 지하 광장 연결", en: "Line 2/8 Jamsil Stn. (Direct connection from underground plaza)", zh: "地铁2号线/8号线蚕室站地下广场连接", ja: "地下鉄2・8号線蚕室駅 地下広場直結" }
+      },
+      {
+        id: "ddp",
+        rating: 4.7,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBq5H2CV-Nw48RQTxrQy8pgeXDiUqBuMBeYue-4KzEpMfiydn-cQ-5MwcmMznWqAMbuSpR3ej7kEjiPrE1u3a3CWniCydJVHuDdc9vRYdSsLaeB7Ym0rPlJfZHsvqo4o-Y1OCOZ9yu_WUig_51L2sd32IcqArijfEb6BN1CqjJCpb0g5dIjMTy_yQA683YHtE9iN3Rceera3kaub0qZL0aGwCYlJhgBbP72oh76G5pxFAR3eXb_VLDUWwu79CheRt5EQcZJrOPv-Nc",
+        category: { ko: "디자인/전시", en: "Design/Exhibition", zh: "设计/展览", ja: "デザイン・展示" },
+        title: { ko: "동대문디자인플라자(DDP)", en: "DDP", zh: "东大门设计广场 (DDP)", ja: "東大門デザインプラザ (DDP)" },
+        subtitle: { ko: "도심에 불시착한 디자인 우주선", en: "A Futuristic Space of Design", zh: "降落城市中心的未来设计飞船", ja: "都心に不時着したデザイン宇宙船" },
+        desc: {
+          ko: "세계적인 건축가 자하 하디드가 설계한 세계 최대 규모의 3차원 비정형 건축물입니다. 우주선을 닮은 곡선형 외관과 다양한 전시, 패션쇼가 열리는 문화 예술의 허브입니다.",
+          en: "Designed by world-renowned architect Zaha Hadid, it is the world's largest 3D atypical structure. Resembling a futuristic spaceship, it serves as a creative hub for exhibitions, design, and fashion.",
+          zh: "由世界著名建筑师扎哈·哈迪德设计的全球最大规模三维非定型建筑。外观呈流线型，酷似宇宙飞船，是举办各种展览、时装秀的文化艺术中心。",
+          ja: "世界的な建築家ザハ・ハディッドが設計した、世界最大規模の3次元非定型建築物です。宇宙船のような曲線美の外観で、多様な展示会やファッションショーが開催される文化芸術の拠点です。"
+        },
+        address: { ko: "서울특별시 중구 을지로 281", en: "281 Eulji-ro, Jung-gu, Seoul", zh: "首尔特别市中区乙支路281", ja: "ソウル特別市中区乙支路281" },
+        hours: { ko: "10:00 - 20:00 (전시공간별 상이)", en: "10:00 - 20:00 (Varies by exhibition)", zh: "10:00 - 20:00 (各展馆营业时间不同)", ja: "10:00 - 20:00 (展示ごとに異なります)" },
+        fee: { ko: "외부 무료 (전시별 티켓 별도)", en: "Free exterior (Exhibitions charge fee)", zh: "外部空间免费 (各展览门票另行收费)", ja: "屋外は無料 (展示ごとに観覧料別途)" },
+        metro: { ko: "2/4/5호선 동대문역사문화공원역 1번 출구 연결", en: "Line 2/4/5 Dongdaemun History & Culture Park Stn. Exit 1", zh: "地铁2/4/5号线东大门历史文化公园站1号出口连接", ja: "地下鉄2・4・5号線東大門歴史文化公園駅1番出口直結" }
+      },
+      {
+        id: "hanriver",
+        rating: 4.9,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCcbPBku9_8AY2Wb_bVn6ay785eBNf2ExESqHDq_CT1yrL3jvmHqnCvos9QE9xZKjRG3aVwFRMtDTMkFW2jxl_FfVNyYUVMZdXwv6rYOax5n4p83_FcAvg8cb8CwLv32TpS6-ZRt10F52ZwkwgY7NQN2bFB3RDsCngvEN8zUstOSMzKWcPbUXz-THzG11QHLjxHbnpLjzvsY4cJUIFJTxhd8soKnILIst1rj6IyZz0EcTIZkzAbkR0MsqJf47Z0eqlz0q1y396_94I",
+        category: { ko: "자연/휴양", en: "Nature/Relaxation", zh: "自然/休闲", ja: "自然・休養" },
+        title: { ko: "한강공원(여의도)", en: "Han River Park", zh: "汉江公园 (汝矣岛)", ja: "漢江公園 (ヨイド)" },
+        subtitle: { ko: "도심 속 힐링 쉼터와 피크닉", en: "Relaxing Getaway in the City Center", zh: "城市中心的休闲与野餐绿洲", ja: "都心での癒やしの空間とピクニック" },
+        desc: {
+          ko: "서울의 젖줄인 한강을 따라 조성된 시민들의 쉼터입니다. 여의도, 반포, 뚝섬 등이 대표적이며 배달 음식을 먹는 '피크닉', '따릉이 자전거', '유람선' 등을 즐길 수 있습니다. 반포대교 달빛무지개분수가 유명합니다.",
+          en: "A vast public park network along the Han River. Popular locations include Yeouido, Banpo, and Ttukseom. Ideal for picnics (delivering food to the park), renting city bikes (Ttareungyi), and river cruises. Banpo Bridge Rainbow Fountain is a highlight.",
+          zh: "沿着贯穿首尔的汉江建成的市民休闲公园。汝矣岛、盘浦、纛岛是其代表，这里可以享受“配送美食野餐”、租借“叮铃铃自行车”以及乘坐“游船”等项目。盘浦大桥的月光彩虹喷泉非常有名。",
+          ja: "ソウルの中心を流れる漢江沿いに整備された市民の憩いの場です。ヨイド（汝矣島）、パンポ（盤浦）、トゥクソムなどが代表的で、デリバリーを頼む「ピクニック」、レンタサイクル「タルンイ」、遊覧船などが楽しめます。盤浦大橋の月光レインボー噴水も有名です。"
+        },
+        address: { ko: "서울특별시 영등포구 여의동로 330 (여의도 기준)", en: "330 Yeouidong-ro, Yeongdeungpo-gu, Seoul", zh: "首尔特别市永登浦区汝矣东路330 (以汝矣岛为准)", ja: "ソウル特別市永登浦区汝矣東路330 (ヨイド基準)" },
+        hours: { ko: "24시간 상시 개방", en: "Open 24 Hours", zh: "24小时开放", ja: "24時間開放" },
+        fee: { ko: "무료", en: "Free", zh: "免费", ja: "無料" },
+        metro: { ko: "5호선 여의나루역 2번 출구 바로 연결", en: "Line 5 Yeouinaru Stn. Exit 2 (Direct connection)", zh: "地铁5号线汝矣渡口站2号出口直达", ja: "地下鉄5号線ヨイナル駅2番出口直結" }
+      },
+      {
+        id: "insadong",
+        rating: 4.6,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDTPrxdAMshXAYMp2BXdzPgEh9psG3pteR23VMKmk8I4blDX48s5NdZF71q1ZJ22TaWodg02oPSmB5SVOU173z2GtnGN9sddEG15jrQgauouGbm2sdUVxP9E0YsHx7Yy1itijZ8ByLdXo0gOkABxtS0x3FHUltHoX3jZvxhQg5zsa9az9eSXRhHDC0jKSKPZve8RCSEWqQvppGRV4OkaJ2ABYlkuMBsBHpJYQJqxcB2GWAzfWUX0EPUqxnGHSILJcdA40jKaxBdLpk",
+        category: { ko: "전통문화/갤러리", en: "Traditional Culture/Galleries", zh: "传统文化/画廊", ja: "伝統文化・ギャラリー" },
+        title: { ko: "인사동", en: "Insadong", zh: "仁寺洞", ja: "仁寺洞 (インサドン)" },
+        subtitle: { ko: "가장 한국다운 멋과 풍경", en: "The Most Korean Aesthetics & Streets", zh: "最具韩国特色的风情街道", ja: "最も韓国らしさを感じられる通り" },
+        desc: {
+          ko: "전통 찻집, 고미술품점, 화랑, 필방 등이 밀집된 한국의 전통미를 가장 잘 느낄 수 있는 거리입니다. 쌈지길은 한글 간판과 독특한 나선형 계단 디자인으로 유명한 문화 복합 공간입니다.",
+          en: "A historic street lined with traditional tea houses, antique shops, art galleries, and craft workshops. Ssamzigil is a famous complex inside Insadong featuring a unique spiral walkway filled with creative artisan shops.",
+          zh: "传统茶馆、古董店、画廊、笔墨店等云集的街道，是体验韩国传统美感的最佳去处。Ssamzigil（人人广场）是一个以韩文招牌和独特的螺旋形楼梯设计闻名的文化综合体。",
+          ja: "伝統茶屋、骨董品店、画廊、筆屋などが密集する、韓国의伝統美を最もよく感じられる通りです。サムジギルはハングルの看板とユニークな螺旋状の歩道デザインで有名な複合文化空間です。"
+        },
+        address: { ko: "서울특별시 종로구 인사동길 일대", en: "Insadong-gil, Jongno-gu, Seoul", zh: "首尔特别市钟路区仁寺洞街一带", ja: "ソウル特別市鐘路区仁寺洞街一帯" },
+        hours: { ko: "10:00 - 20:00 (점포마다 다름)", en: "10:00 - 20:00 (Varies by shop)", zh: "10:00 - 20:00 (店铺不同，营业时间各异)", ja: "10:00 - 20:00 (店舗ごとに異なります)" },
+        fee: { ko: "무료", en: "Free", zh: "免费", ja: "無料" },
+        metro: { ko: "3호선 안국역 6번 출구에서 도보 2분", en: "Line 3 Anguk Stn. Exit 6, 2-min walk", zh: "地铁3号线安国站6号出口步行2分钟", ja: "地下鉄3号線安国駅6番出口から徒歩2分" }
+      },
+      {
+        id: "namdaemun",
+        rating: 4.7,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBH2m2YHMSN4qLccnV1llVdAnx2-Y4W5hugvPvg33cZlHpO8kbSWsffif75Hcp5IBE3IATzWtlgcJH2l68lN3TKatrW9KOdM1svajhjsNqF5w1fNVjLBtn3XtLT73YbzhSW64yCrsVw-1zU9cqjBU6G_BEyHun74lRKwwLR5ezhbM-167tLLscahkxO7ZQnHcMkiC3HX8_EUOin0USCLeukUZTIYqEmbAXbJhfh6W5WV1bXeLETsO48JgPbKj2kGpehcCCCRE7yZc",
+        category: { ko: "전통시장/쇼핑", en: "Traditional Market/Shopping", zh: "传统市场/购物", ja: "伝統市場・ショッピング" },
+        title: { ko: "남대문시장", en: "Namdaemun Market", zh: "南大门市场", ja: "南大門市場" },
+        subtitle: { ko: "없는 것이 없는 활기찬 재래시장", en: "A Lively Traditional Market Selling Everything", zh: "应有尽有的活力传统市场", ja: "何でも揃う活気あふれる在来市場" },
+        desc: {
+          ko: "600년이 넘는 역사를 지닌 한국 최대 규모의 전통 종합시장입니다. 의류, 아동복, 액세서리 등 없는 것이 없으며, 갈치조림 골목과 칼국수 골목 등 서민적인 먹거리가 유명합니다.",
+          en: "With over 600 years of history, it is the largest traditional market in Korea. Offering everything from clothing and accessories to kitchenware. Famous for its local food alleys like Braised Cutlassfish Alley and Kalguksu Alley.",
+          zh: "拥有600多年历史的韩国最大规模的传统综合市场。从服装、童装到饰品应有尽有。带鱼胡同、刀切面胡同等平民美食街也极其有名。",
+          ja: "600年以上の歴史を誇る韓国最大規模の伝統総合市場です。衣類、子供服、アクセサリーなど何でも揃い、太刀魚の煮付け通りやカルグクス通りなど、庶民的なグルメ通りも有名です。"
+        },
+        address: { ko: "서울특별시 중구 남대문시장4길 21", en: "21 Namdaemunsijang 4-gil, Jung-gu, Seoul", zh: "首尔特别市中区南大门市场4街21", ja: "ソウル特別市中区南大門市場4街21" },
+        hours: { ko: "23:00 - 익일 18:00 (일요일 대부분 휴무)", en: "23:00 - 18:00 Next Day (Mostly closed on Sundays)", zh: "23:00 - 次日 18:00 (大部分周日休息)", ja: "23:00 - 翌日 18:00 (日曜は多くが休業)" },
+        fee: { ko: "무료", en: "Free", zh: "免费", ja: "無料" },
+        metro: { ko: "4호선 회현역 5, 6, 7번 출구 바로 연결", en: "Line 4 Hoehyeon Stn. Exit 5, 6, 7 (Direct access)", zh: "地铁4号线会贤站5、6、7号出口直达", ja: "地下鉄4号線会賢駅5・6・7番出口直結" }
+      },
+      {
+        id: "cheonggyecheon",
+        rating: 4.8,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfpWd7mK1Sc1A0nG7TrFLUC-3lqlBTQdANzSadmNg4i1q5zNwwmYA4mpflifTpCoHDMfLVp0tA2b0uoqaA9Dlj6gOd3-nyKRwPB8oef3fsTNaPvOOjzjfmqTsohdXB1Y97V5ruzRgF-zJP9vGkxtxDJguapFLlEAmypOhO32W-cb33xxnAov0-IkKfWSrUvDYtQkBGWMg3ULndaD6FwQwu_jYfZr7MiM10C5Xhkm8dYyfAkDhURaY9LWD7iGXExv8bgJbUJtJrs_A",
+        category: { ko: "자연/도심천", en: "Nature/Urban Stream", zh: "自然/城市溪流", ja: "自然・都心の川" },
+        title: { ko: "청계천", en: "Cheonggyecheon Stream", zh: "清溪川", ja: "清渓川 (チョンゲチョン)" },
+        subtitle: { ko: "빌딩 숲을 흐르는 푸른 물줄기", en: "A Quiet Stream Flowing Through Skyscrapers", zh: "穿行于高楼大厦间的清凉溪水", ja: "ビルの森を流れる青いせせらぎ" },
+        desc: {
+          ko: "서울 도심 한복판을 흐르는 10.8km 길이의 복원된 하천입니다. 빌딩 숲 사이에서 물소리를 들으며 산책할 수 있어 시민들과 관광객들에게 훌륭한 휴식처를 제공하며, 밤에는 화려한 조명이 밝혀집니다.",
+          en: "A 10.8km restored urban stream flowing through the heart of downtown Seoul. Offering a peaceful oasis among skyscrapers with walking paths, waterfalls, and beautiful evening light installations.",
+          zh: "流经首尔市中心的一条长达10.8公里的复原河道。市民和游客可以在高楼林立的市区里，听着潺潺水声散步休息。夜晚这里会亮起华丽的灯光。",
+          ja: "ソウルの都心の真んclockを流れる長さ10.8kmの復元された河川です。ビルの森の間で水の音を聞きながら散策でき、市民や観光客に素晴らしい休息空間を提供しています。夜には華やかな照明が点灯します。"
+        },
+        address: { ko: "서울특별시 종로구 청계천로 일대", en: "Cheonggyecheon-ro, Jongno-gu, Seoul", zh: "首尔特别市钟路区清溪川路一带", ja: "ソウル特別市鐘路区清渓川路一帯" },
+        hours: { ko: "24시간 상시 개방", en: "Open 24 Hours", zh: "24时间开放", ja: "24時間開放" },
+        fee: { ko: "무료", en: "Free", zh: "免费", ja: "無料" },
+        metro: { ko: "5호선 광화문역 5번 출구 또는 2호선 을지로입구역 2, 3번 출구", en: "Line 5 Gwanghwamun Stn. Exit 5 OR Line 2 Euljiro 1-ga Stn. Exit 2, 3", zh: "地铁5号线光化门站5号出口，或2号线乙支路入口站2、3号出口", ja: "地下鉄5号線光化門駅5番出口、または2号線乙支路入口駅2・3番出口" }
+      }
+    ];
+
+    const UI_TRANSLATIONS = {
+      ko: {
+        navAttractions: "명소",
+        navItineraries: "일정 계획",
+        navMap: "지도",
+        navTips: "여행 가이드",
+        searchPlaceholder: "가고 싶은 명소를 검색하세요...",
+        heroTitle: "서울의 매력을 발견하세요",
+        heroDesc: "과거와 미래가 공존하는 한국의 심장부, 서울로 여러분을 초대합니다.",
+        heroBtn: "시작하기 Explore Now",
+        introTitle: "역사와 미래의 공존, 서울",
+        introDesc: "600년의 역사를 품은 고궁과 하늘을 찌르는 마천루가 어우러진 서울은 끊임없이 변화하는 역동적인 도시입니다. 전통과 현대가 완벽한 조화를 이루는 서울의 독특한 풍경 속에서 당신만의 특별한 이야기를 만들어보세요.",
+        introQuote: "서울: 역사가 호흡하고 미래가 열리는 곳",
+        gridTitle: "서울 10대 명소",
+        gridSub: "Top 10 Must-Visit Attractions",
+        cardBtn: "자세히 보기 View Details",
+        langTitle: "다국어 지원 서비스",
+        langDesc: "서울 디스커버리는 전 세계 방문객들을 위해 4개 국어를 지원합니다. 당신에게 가장 익숙한 언어로 서울의 구석구석을 탐험하세요.",
+        footerPortal: "서울 대표 명소 및 문화유산 안내 포털",
+        footerRights: "© 2024 서울특별시. All rights reserved.",
+        footerPrivacy: "개인정보 처리방침",
+        footerTerms: "이용약관",
+        footerContact: "문의하기",
+        footerOfficial: "공식 관광 포털",
+        searchTitle: "명소 검색",
+        noResults: "검색 결과가 없습니다.",
+        itineraryTitle: "나만의 서울 여행 일정",
+        itinerarySub: "일정을 맞춤 설계하고 다운로드하세요",
+        itineraryEmpty: "일정에 추가된 명소가 없습니다. 위 명소 카드의 '일정에 추가' 버튼을 눌러보세요!",
+        clearItinerary: "일정 비우기",
+        downloadItinerary: "텍스트 저장",
+        selectDayPrompt: "명소를 몇 일차에 추가하시겠습니까?",
+        day1: "1일차 (Day 1)",
+        day2: "2일차 (Day 2)",
+        closeBtn: "닫기",
+        addToItineraryBtn: "일정에 추가",
+        viewOnMapBtn: "지도에서 보기",
+        addressLabel: "주소",
+        hoursLabel: "운영 시간",
+        feeLabel: "입장료",
+        metroLabel: "대중교통",
+        tipsTitle: "서울 여행 정보 & 팁",
+        tipsSub: "더 즐겁고 편리한 서울 여행을 위한 가이드",
+        tip1Header: "🚍 대중교통 및 T-money",
+        tip1Body: "서울의 대중교통은 지하철과 버스 간 환승 할인이 적용되어 매우 저렴합니다. 편의점이나 역사 내 자판기에서 'T-money' 카드를 구매하고 충전하여 가볍게 태그하고 타세요.",
+        tip2Header: "📱 필수의 모바일 앱",
+        tip2Body: "한국에서는 구글 맵 대신 '네이버 지도(Naver Map)' 또는 '카카오맵'을 다운로드해 도보 및 길찾기를 이용하세요. 번역이 필요하면 '파파고(Papago)'를 이용해 한국인과 원활하게 대화할 수 있고, 택시는 '카카오 T(Kakao T)' 앱이 유용합니다.",
+        tip3Header: "💰 결제 및 텍스 리펀",
+        tip3Body: "거의 모든 가맹점, 식당, 심지어 택시에서도 신용카드를 전적으로 허용합니다. 다만 현지 전통시장이나 교통카드 잔액 충전 시 소액 현금(원화)이 유용합니다. 외국인 관광객은 주요 샵에서 즉시 텍스 리펀을 신청할 수 있습니다.",
+        tip4Header: "🚨 응급 조치 및 무료 통역",
+        tip4Body: "화재나 환자 발생 등 응급전화는 119, 범죄 신고는 112로 전화하세요. 통역이나 관광 가이드가 실시간으로 필요할 경우 1330(관광 안내 전화)을 이용하면 24시간 한국어/영어/일어/중국어 통역 서비스를 연결받을 수 있습니다.",
+        contactTitle: "서울 디스커버리에 문의하기",
+        contactName: "이름",
+        contactEmail: "이메일",
+        contactMsg: "메시지",
+        contactSend: "전송하기",
+        contactSuccess: "메시지가 전송되었습니다! 빠른 시일 내에 연락드리겠습니다.",
+        mapHanRiver: "한강",
+        mapNamsan: "남산",
+        mapBukhansan: "북한산"
+      },
+      en: {
+        navAttractions: "Attractions",
+        navItineraries: "Itineraries",
+        navMap: "Map",
+        navTips: "Travel Tips",
+        searchPlaceholder: "Search for attractions...",
+        heroTitle: "Discover Seoul's Charm",
+        heroDesc: "A journey through the heart of Korea where ancient traditions meet futuristic innovation.",
+        heroBtn: "Explore Now",
+        introTitle: "Coexistence of History & Future, Seoul",
+        introDesc: "With 600 years of royal history intermingled with soaring skyscrapers, Seoul is a dynamic city that never stops evolving. Craft your own special story in this unique landscape where tradition and modernity blend in perfect harmony.",
+        introQuote: "Seoul: Where history breathes and the future unfolds.",
+        gridTitle: "Seoul's Top 10 Attractions",
+        gridSub: "Must-Visit Landmarks in the Capital",
+        cardBtn: "View Details",
+        langTitle: "Multilingual Support Services",
+        langDesc: "Seoul Discovery supports 4 languages for visitors worldwide. Explore every corner of Seoul in the language you are most comfortable with.",
+        footerPortal: "Official Discovery Portal for Seoul's Premier Attractions & Heritage.",
+        footerRights: "© 2024 Seoul Metropolitan Government. All rights reserved.",
+        footerPrivacy: "Privacy Policy",
+        footerTerms: "Terms of Service",
+        footerContact: "Contact Us",
+        footerOfficial: "Official Tourism Portal",
+        searchTitle: "Search Attractions",
+        noResults: "No results found.",
+        itineraryTitle: "My Seoul Itinerary",
+        itinerarySub: "Design your custom travel route and save it",
+        itineraryEmpty: "No attractions added yet. Click 'Add to Itinerary' on attraction cards or inside details!",
+        clearItinerary: "Clear All",
+        downloadItinerary: "Save Plan",
+        selectDayPrompt: "Select the day to add this attraction:",
+        day1: "Day 1",
+        day2: "Day 2",
+        closeBtn: "Close",
+        addToItineraryBtn: "Add to Itinerary",
+        viewOnMapBtn: "View on Map",
+        addressLabel: "Address",
+        hoursLabel: "Opening Hours",
+        feeLabel: "Admission Fee",
+        metroLabel: "Subway Access",
+        tipsTitle: "Seoul Travel Tips & Info",
+        tipsSub: "Essential guides for a smooth and delightful trip to Seoul",
+        tip1Header: "🚍 Transportation & T-money",
+        tip1Body: "Seoul features a world-class public transport network. Subways and buses offer convenient transfer discounts. Purchase a rechargeable 'T-money' card at any convenience store or subway ticket machine to tap and go.",
+        tip2Header: "📱 Essential Mobile Apps",
+        tip2Body: "Instead of Google Maps, download 'Naver Map' or 'KakaoMap' for accurate walking directions and timetables. Use 'Papago' for high-quality translations, and install 'Kakao T' for easily hailing taxis anywhere in the city.",
+        tip3Header: "💰 Payments & Tax Refunds",
+        tip3Body: "Credit cards are widely accepted at almost all shops, restaurants, and taxis. However, keep some cash (KRW) for street markets and reloading T-money cards. Immediate tax refunds are available at major retail stores.",
+        tip4Header: "🚨 Emergency & Hotlines",
+        tip4Body: "For fire or medical emergency dial 119. For police dial 112. If you need travel advice or translation assistance, dial 1330 for the Korea Travel Hotline, offering free 24/7 multilingual support.",
+        contactTitle: "Contact Seoul Discovery",
+        contactName: "Name",
+        contactEmail: "Email",
+        contactMsg: "Message",
+        contactSend: "Send Message",
+        contactSuccess: "Message sent successfully! We will get back to you shortly.",
+        mapHanRiver: "Han River",
+        mapNamsan: "Namsan",
+        mapBukhansan: "Bukhansan"
+      },
+      zh: {
+        navAttractions: "景点",
+        navItineraries: "行程规划",
+        navMap: "地图",
+        navTips: "旅游指南",
+        searchPlaceholder: "搜索想去的景点...",
+        heroTitle: "发现首尔的魅力",
+        heroDesc: "欢迎来到首尔——韩国的心脏，在这里，六百年的古老历史与尖端未来并存。",
+        heroBtn: "立即开启 Explore",
+        introTitle: "历史与未来的交融——首尔",
+        introDesc: "首尔是一座充满活力的都市，600年历史的古老宫殿与摩天大楼交相辉映。在传统与现代完美融合的独特景致中，书写专属于你的特别故事吧。",
+        introQuote: "首尔：历史在此呼吸，未来在此展开。",
+        gridTitle: "首尔十大名胜",
+        gridSub: "在首尔不容错过的代表性景点",
+        cardBtn: "查看详情 View Details",
+        langTitle: "多语言支持服务",
+        langDesc: "首尔探索网为全球游客提供四种语言支持。请使用您最熟悉的语言，尽情探索首尔的每一个角落。",
+        footerPortal: "官方首尔代表景点及文化遗产指南门户网站。",
+        footerRights: "© 2024 首尔特别市。保留所有权利。",
+        footerPrivacy: "隐私政策",
+        footerTerms: "服务条款",
+        footerContact: "联系我们",
+        footerOfficial: "官方旅游门户",
+        searchTitle: "景点搜索",
+        noResults: "未找到搜索结果。",
+        itineraryTitle: "我的首尔行程",
+        itinerarySub: "定制您的专属旅行路线并保存",
+        itineraryEmpty: "行程单为空。点击景点卡片或详情中的“加入行程”按钮开始吧！",
+        clearItinerary: "清空行程",
+        downloadItinerary: "保存文本",
+        selectDayPrompt: "选择加入行程的天数:",
+        day1: "第 1 天",
+        day2: "第 2 天",
+        closeBtn: "关闭",
+        addToItineraryBtn: "加入行程",
+        viewOnMapBtn: "地图中查看",
+        addressLabel: "地址",
+        hoursLabel: "营业时间",
+        feeLabel: "门票价格",
+        metroLabel: "交通指南",
+        tipsTitle: "首尔旅游温馨提示",
+        tipsSub: "让您的首尔之旅更加轻松愉快的必备指南",
+        tip1Header: "🚍 大众交通及交通卡",
+        tip1Body: "首尔的大众交通体系非常发达，地铁和巴士之间可享受换乘优惠。您可以在便利店或地铁站的自动售卡机购买并充值“T-money”交通卡，刷卡出行非常方便。",
+        tip2Header: "📱 必备出行应用",
+        tip2Body: "在韩国，推荐下载使用“Naver Map”或“KakaoMap”进行步行导航，数据比谷歌地图更精准。翻译推荐使用“Papago”以进行顺畅交流。打车可以使用“Kakao T”软件。",
+        tip3Header: "💰 支付与退税指南",
+        tip3Body: "绝大多数商店、餐厅和出租车都全面支持信用卡。但是在传统市场消费或充值交通卡时，建议准备适量韩币现金。外国游客在主要商家购物可当场申请办理退税。",
+        tip4Header: "🚨 紧急救援与翻译热线",
+        tip4Body: "遇到火灾或医疗紧急情况，请拨打119；报警请拨112。如需多语种旅游咨询或实时口译，可拨打1330（旅游咨询热线），提供24小时英/日/中等多语种免费服务。",
+        contactTitle: "联系首尔探索团队",
+        contactName: "姓名",
+        contactEmail: "电子邮箱",
+        contactMsg: "留言内容",
+        contactSend: "提交留言",
+        contactSuccess: "您的留言已成功发送！我们会尽快回复您。",
+        mapHanRiver: "汉江",
+        mapNamsan: "南山",
+        mapBukhansan: "北汉山"
+      },
+      ja: {
+        navAttractions: "名所",
+        navItineraries: "日程計画",
+        navMap: "地図",
+        navTips: "旅行ガイド",
+        searchPlaceholder: "行きたい観光地を検索...",
+        heroTitle: "ソウルの魅力を発見する",
+        heroDesc: "600年の歴史を持つ古宮と最先端의未来が共存する韓国の心臓部、ソウルへ皆様をご招待します。",
+        heroBtn: "今すぐ探検 Explore",
+        introTitle: "歴史と未来の共存、ソウル",
+        introDesc: "600年の歴史を誇る古宮とそびえ立つ超高層ビルが調和するソウルは、絶えず変化し続けるダイナミックな都市です。伝統と現代が完璧に調和したソウルならではの風景の中で、あなただけの特別なストーリーを作ってみてください。",
+        introQuote: "ソウル：歴史が息づき、未来が開ける場所",
+        gridTitle: "ソウルの10大名所",
+        gridSub: "ソウル旅行で必ず訪れるべき代表的な観光地",
+        cardBtn: "詳細を見る View Details",
+        langTitle: "多言語対応サービス",
+        langDesc: "ソウル・ディスカバリーは、全世界からの旅行者のために4か国語に対応しています。あなたにとって最も馴染みのある言語で、ソウルの隅々まで旅してみましょう。",
+        footerPortal: "ソウルを代表する名所や文化遺産を紹介する公式ソウル観光ポータルです。",
+        footerRights: "© 2024 ソウル特別市. All rights reserved.",
+        footerPrivacy: "個人情報処理方針",
+        footerTerms: "利用規約",
+        footerContact: "お問い合わせ",
+        footerOfficial: "公式観光ポータル",
+        searchTitle: "観光地検索",
+        noResults: "検索結果がありません。",
+        itineraryTitle: "マイソウル旅行日程",
+        itinerarySub: "お好みのコースを設計して保存してください",
+        itineraryEmpty: "日程に追加された観光地がありません。上のカードや詳細画面で「日程に追加」ボタンを押してみてください！",
+        clearItinerary: "日程をクリア",
+        downloadItinerary: "テキスト保存",
+        selectDayPrompt: "追加する日を選択してください:",
+        day1: "1日目 (Day 1)",
+        day2: "2日目 (Day 2)",
+        closeBtn: "閉じる",
+        addToItineraryBtn: "日程に追加",
+        viewOnMapBtn: "地図で見る",
+        addressLabel: "住所",
+        hoursLabel: "営業時間",
+        feeLabel: "入場料",
+        metroLabel: "アクセス",
+        tipsTitle: "ソウル旅行のヒント & 情報",
+        tipsSub: "もっと楽しく便利なソウル旅行のための必須ガイド",
+        tip1Header: "🚍 公共交通機関とT-money",
+        tip1Body: "ソウルの公共交通機関は、地下鉄とバスの間の乗り換え割引が適用され、非常に便利で低料金です。コンビニや地下鉄駅の自販機で「T-money」カードを購入・チャージし、タッチしてご利用ください。",
+        tip2Header: "📱 おすすめの旅行アプリ",
+        tip2Body: "韓国ではGoogleマップの代わりに「Naver Map」または「KakaoMap」をダウンロードして徒歩ルートを検索するのが正確です。翻訳は「Papago」がおすすめで、タクシーを呼ぶ際は「Kakao T」アプリをインストールしておくと便利です。",
+        tip3Header: "💰 決済と免税（タックスリファンド）",
+        tip3Body: "ほぼすべての加盟店、レストラン、さらにタクシーでもクレジットカードが利用可能です。ただし、伝統市場での買い物や交通カードのチャージ用に少しの現金（ウォン）を用意しておくと安心です。主要店舗ではその場で免税を受けられます。",
+        tip4Header: "🚨 緊急連絡先と無料通訳",
+        tip4Body: "火災や救急などの緊急連絡は119、犯罪の申告は112へおかけください。通訳や観光ガイドが必要な場合は、1330（観光案内電話）に電話すれば、24時間無料で英語/日本語/中国語の通訳サービスが受けられます。",
+        contactTitle: "ソウル・디스커버리にお問い合わせ",
+        contactName: "お名前",
+        contactEmail: "メールアドレス",
+        contactMsg: "メッセージ内容",
+        contactSend: "送信する",
+        contactSuccess: "メッセージが送信されました！近いうちにご返信いたします。",
+        mapHanRiver: "漢江",
+        mapNamsan: "南山",
+        mapBukhansan: "北漢山"
+      }
+    };
+
+    // ----------------------------------------------------
+    // STATE LAYER
+    // ----------------------------------------------------
+    let currentLang = localStorage.getItem('seoul_lang') || 'ko';
+    let itinerary = JSON.parse(localStorage.getItem('seoul_itinerary')) || { 1: [], 2: [] };
+    let theme = localStorage.getItem('seoul_theme') || 'light';
+    let activeAttractionId = null;
+
+    // ----------------------------------------------------
+    // INITIALIZATION & LIFECYCLE
+    // ----------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Theme Configuration
+      if (theme === 'dark' || (theme === 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('seoul_theme'))) {
+        document.documentElement.classList.add('dark');
+        theme = 'dark';
+      } else {
+        document.documentElement.classList.remove('dark');
+        theme = 'light';
+      }
+      updateThemeIcon();
+      
+      // Body theme transition active
+      document.body.classList.add('theme-transition');
+
+      // 2. Navigation Shadow logic
+      const nav = document.querySelector('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          nav.classList.add('shadow-md');
+          nav.classList.replace('bg-surface/85', 'bg-surface');
+        } else {
+          nav.classList.remove('shadow-md');
+          nav.classList.replace('bg-surface', 'bg-surface/85');
+        }
+      });
+
+      // 3. Render contents
+      updateUITranslations();
+      
+      // 4. Close dropdown/modals when clicking outside
+      window.addEventListener('click', (e) => {
+        // Language Dropdown
+        const langDropdown = document.getElementById('lang-dropdown');
+        const langBtn = document.getElementById('lang-menu-btn');
+        if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+          langDropdown.classList.add('hidden');
+        }
+
+        // Details Modal
+        const detailsModal = document.getElementById('details-modal');
+        if (e.target === detailsModal) {
+          closeDetailsModal();
+        }
+
+        // Search Modal
+        const searchModal = document.getElementById('search-modal');
+        if (e.target === searchModal) {
+          closeSearchModal();
+        }
+
+        // Day Select Modal
+        const dayModal = document.getElementById('day-select-modal');
+        if (e.target === dayModal) {
+          closeDaySelectModal();
+        }
+
+        // General Modal (Contact, Terms, Privacy)
+        ['contact-modal', 'privacy-modal', 'terms-modal'].forEach(id => {
+          const m = document.getElementById(id);
+          if (e.target === m) {
+            closeModal(id);
+          }
+        });
+      });
+    });
+
+    // ----------------------------------------------------
+    // RENDER CONTROLLERS
+    // ----------------------------------------------------
+    function renderAttractionsGrid() {
+      const grid = document.getElementById('attractions-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      ATTRACTION_DATA.forEach(attraction => {
+        const card = document.createElement('div');
+        card.className = 'group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 opacity-0 translate-y-10 flex flex-col h-[340px]';
+        card.setAttribute('data-id', attraction.id);
+        
+        const title = attraction.title[currentLang] || attraction.title.en;
+        const category = attraction.category[currentLang] || attraction.category.en;
+        const subTitle = attraction.subtitle[currentLang] || attraction.subtitle.en;
+        const ratingStr = attraction.rating.toFixed(1);
+        
+        card.innerHTML = `
+          <div class="h-44 overflow-hidden relative shrink-0">
+            <img alt="${title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${attraction.image}"/>
+            <span class="absolute top-sm left-sm bg-primary/90 text-on-primary text-[10px] px-sm py-xs rounded-full font-bold uppercase tracking-wider shadow-sm">${category}</span>
+          </div>
+          <div class="p-md flex flex-col justify-between flex-1 min-h-0 bg-surface-container-lowest">
+            <div class="min-h-0">
+              <div class="flex justify-between items-start mb-xs gap-xs">
+                <h3 class="font-headline-md text-base font-bold text-on-surface leading-tight noto-serif truncate max-w-[70%]">${title}</h3>
+                <span class="flex items-center text-tertiary text-xs gap-[2px] font-bold shrink-0">
+                  <span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span> ${ratingStr}
+                </span>
+              </div>
+              <p class="text-[11px] text-on-surface-variant line-clamp-1 mb-md">${subTitle}</p>
+            </div>
+            <div class="flex flex-col gap-xs mt-auto">
+              <button onclick="openDetailsModal('${attraction.id}')" class="w-full py-xs border border-outline text-primary hover:bg-primary hover:text-on-primary font-bold rounded-xl transition-colors text-[11px] flex items-center justify-center gap-xs">
+                <span>${UI_TRANSLATIONS[currentLang].cardBtn}</span>
+              </button>
+              <button onclick="openDaySelectModal('${attraction.id}')" class="w-full py-xs bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold rounded-xl transition-colors text-[11px] flex items-center justify-center gap-xs">
+                <span class="material-symbols-outlined text-sm">add</span>
+                <span>${UI_TRANSLATIONS[currentLang].addToItineraryBtn}</span>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      
+      observeCards();
+    }
+
+    function observeCards() {
+      const observerOptions = { threshold: 0.05 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('#attractions-grid > div').forEach(card => {
+        observer.observe(card);
+      });
+    }
+
+    function renderItinerary() {
+      const day1List = document.getElementById('itinerary-day-1-list');
+      const day2List = document.getElementById('itinerary-day-2-list');
+      const emptyState = document.getElementById('itinerary-empty-state');
+      const itineraryContainer = document.getElementById('itinerary-content');
+      
+      day1List.innerHTML = '';
+      day2List.innerHTML = '';
+      
+      const day1Count = itinerary[1].length;
+      const day2Count = itinerary[2].length;
+      
+      if (day1Count === 0 && day2Count === 0) {
+        emptyState.classList.remove('hidden');
+        itineraryContainer.classList.add('hidden');
+        return;
+      }
+      
+      emptyState.classList.add('hidden');
+      itineraryContainer.classList.remove('hidden');
+      
+      const getDuration = (id) => {
+        const d = { gyeongbokgung: 2, nseoultower: 2, bukchon: 1.5, myeongdong: 2.5, lotteworldtower: 2.5, ddp: 2, hanriver: 3, insadong: 1.5, namdaemun: 2, cheonggyecheon: 1 };
+        return d[id] || 2;
+      };
+      
+      // Render Day 1
+      if (day1Count === 0) {
+        day1List.innerHTML = `<div class="text-center py-md text-on-surface-variant text-xs italic opacity-70">Day 1 is empty</div>`;
+        document.getElementById('day-1-summary').innerText = `Stops: 0`;
+      } else {
+        let totalDuration = 0;
+        itinerary[1].forEach((item, index) => {
+          const duration = getDuration(item.id);
+          totalDuration += duration;
+          day1List.appendChild(createItineraryItemElement(item, 1, index, duration));
+        });
+        document.getElementById('day-1-summary').innerText = `Stops: ${day1Count} | ${totalDuration.toFixed(1)}h`;
+      }
+      
+      // Render Day 2
+      if (day2Count === 0) {
+        day2List.innerHTML = `<div class="text-center py-md text-on-surface-variant text-xs italic opacity-70">Day 2 is empty</div>`;
+        document.getElementById('day-2-summary').innerText = `Stops: 0`;
+      } else {
+        let totalDuration = 0;
+        itinerary[2].forEach((item, index) => {
+          const duration = getDuration(item.id);
+          totalDuration += duration;
+          day2List.appendChild(createItineraryItemElement(item, 2, index, duration));
+        });
+        document.getElementById('day-2-summary').innerText = `Stops: ${day2Count} | ${totalDuration.toFixed(1)}h`;
+      }
+    }
+
+    function createItineraryItemElement(item, day, index, duration) {
+      const container = document.createElement('div');
+      container.className = 'group relative flex gap-md pb-md last:pb-0 items-start';
+      
+      const title = item.title[currentLang] || item.title.en;
+      const category = item.category[currentLang] || item.category.en;
+      
+      container.innerHTML = `
+        <div class="flex flex-col items-center h-full absolute left-[14px] top-2 bottom-0">
+          <div class="w-3 h-3 rounded-full bg-primary border-2 border-surface-container-lowest z-10"></div>
+          <div class="w-[1.5px] bg-outline-variant flex-1 -mt-1 group-last:hidden"></div>
+        </div>
+        
+        <div class="flex items-center gap-md pl-6 flex-1 bg-surface-container-low border border-outline-variant/30 rounded-xl p-sm hover:shadow-md transition-shadow">
+          <img src="${item.image}" class="w-12 h-12 object-cover rounded-lg shrink-0" alt="">
+          <div class="flex-1 min-w-0">
+            <h5 class="font-bold text-xs text-on-surface truncate">${title}</h5>
+            <div class="flex items-center gap-sm mt-[2px]">
+              <span class="text-[9px] bg-secondary-container text-on-secondary-container px-sm py-[2px] rounded-full font-bold uppercase tracking-wider shrink-0">${category}</span>
+              <span class="text-[10px] text-on-surface-variant font-medium shrink-0">⏱ ${duration}h</span>
+            </div>
+          </div>
+          <button onclick="removeFromItinerary(${day}, ${index})" class="material-symbols-outlined text-on-surface-variant hover:text-error text-lg p-xs hover:bg-surface-container-high rounded-full transition-colors shrink-0">delete</button>
+        </div>
+      `;
+      return container;
+    }
+
+    // ----------------------------------------------------
+    // ITINERARY INTERACTIONS
+    // ----------------------------------------------------
+    function openDaySelectModal(id) {
+      activeAttractionId = id;
+      const modal = document.getElementById('day-select-modal');
+      const card = document.getElementById('day-select-card');
+      
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        card.classList.remove('scale-90', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeDaySelectModal() {
+      const modal = document.getElementById('day-select-modal');
+      const card = document.getElementById('day-select-card');
+      
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-90', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        activeAttractionId = null;
+      }, 250);
+    }
+
+    function confirmAddToItinerary(day) {
+      if (!activeAttractionId) return;
+      const attraction = ATTRACTION_DATA.find(a => a.id === activeAttractionId);
+      if (!attraction) return;
+      
+      // Check if exists
+      if (itinerary[day].some(item => item.id === attraction.id)) {
+        const errorMsg = currentLang === 'ko' ? '이미 추가된 명소입니다.' : 'Already added to this day.';
+        showToast(errorMsg, 'error');
+        closeDaySelectModal();
+        return;
+      }
+      
+      itinerary[day].push(attraction);
+      localStorage.setItem('seoul_itinerary', JSON.stringify(itinerary));
+      
+      renderItinerary();
+      closeDaySelectModal();
+      closeDetailsModal();
+      
+      const successMsg = `${attraction.title[currentLang]} - ${UI_TRANSLATIONS[currentLang].addedToItinerary}`;
+      showToast(successMsg, 'success');
+    }
+
+    function removeFromItinerary(day, index) {
+      const title = itinerary[day][index].title[currentLang];
+      itinerary[day].splice(index, 1);
+      localStorage.setItem('seoul_itinerary', JSON.stringify(itinerary));
+      renderItinerary();
+      
+      const removeMsg = currentLang === 'ko' ? `${title} 일정을 취소했습니다.` : `Removed ${title}.`;
+      showToast(removeMsg, 'info');
+    }
+
+    function clearItinerary() {
+      itinerary[1] = [];
+      itinerary[2] = [];
+      localStorage.setItem('seoul_itinerary', JSON.stringify(itinerary));
+      renderItinerary();
+      
+      const clearMsg = currentLang === 'ko' ? '일정이 비워졌습니다.' : 'Itinerary cleared.';
+      showToast(clearMsg, 'info');
+    }
+
+    function downloadItineraryText() {
+      let text = `===============================\n`;
+      text += `     MY SEOUL ITINERARY PLAN\n`;
+      text += `===============================\n\n`;
+      
+      const getDuration = (id) => {
+        const d = { gyeongbokgung: 2, nseoultower: 2, bukchon: 1.5, myeongdong: 2.5, lotteworldtower: 2.5, ddp: 2, hanriver: 3, insadong: 1.5, namdaemun: 2, cheonggyecheon: 1 };
+        return d[id] || 2;
+      };
+
+      if (itinerary[1].length === 0 && itinerary[2].length === 0) {
+        text += `No planned stops.\n`;
+      } else {
+        [1, 2].forEach(day => {
+          if (itinerary[day].length > 0) {
+            text += `[DAY ${day}]\n`;
+            itinerary[day].forEach((item, index) => {
+              text += `  ${index + 1}. ${item.title[currentLang]} (${item.category[currentLang]})\n`;
+              text += `     - Address: ${item.address[currentLang]}\n`;
+              text += `     - Transit: ${item.metro[currentLang]}\n`;
+              text += `     - Hours: ${item.hours[currentLang]}\n`;
+              text += `     - Duration: ${getDuration(item.id)} hours\n\n`;
+            });
+          }
+        });
+      }
+      
+      text += `===============================\n`;
+      text += `Generated by Seoul Discovery Portal\n`;
+      
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `my_seoul_itinerary_${currentLang}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // ----------------------------------------------------
+    // ACCORDION TRAVEL TIPS
+    // ----------------------------------------------------
+    function toggleAccordion(id) {
+      const content = document.getElementById(`accordion-content-${id}`);
+      const icon = document.getElementById(`accordion-icon-${id}`);
+      
+      if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        content.style.maxHeight = '0px';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        // Auto close others
+        for (let i = 1; i <= 4; i++) {
+          if (i !== id) {
+            document.getElementById(`accordion-content-${i}`).style.maxHeight = '0px';
+            document.getElementById(`accordion-icon-${i}`).style.transform = 'rotate(0deg)';
+          }
+        }
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // ----------------------------------------------------
+    // LANGUAGE SWITCH SYSTEM
+    // ----------------------------------------------------
+    function toggleLangDropdown() {
+      const dropdown = document.getElementById('lang-dropdown');
+      dropdown.classList.toggle('hidden');
+    }
+
+    function changeLanguage(langCode) {
+      currentLang = langCode;
+      localStorage.setItem('seoul_lang', langCode);
+      document.getElementById('lang-dropdown').classList.add('hidden');
+      updateUITranslations();
+      showToast(langCode === 'ko' ? '한국어로 변경되었습니다!' : `Language changed to ${langCode.toUpperCase()}`);
+    }
+
+    function updateUITranslations() {
+      document.getElementById('current-lang-code').innerText = currentLang.toUpperCase();
+      
+      // Elements with data-t text
+      document.querySelectorAll('[data-t]').forEach(el => {
+        const key = el.getAttribute('data-t');
+        if (UI_TRANSLATIONS[currentLang][key]) {
+          el.innerHTML = UI_TRANSLATIONS[currentLang][key];
+        }
+      });
+      
+      // Elements with data-t placeholder
+      document.querySelectorAll('[data-t-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-t-placeholder');
+        if (UI_TRANSLATIONS[currentLang][key]) {
+          el.setAttribute('placeholder', UI_TRANSLATIONS[currentLang][key]);
+        }
+      });
+      
+      renderAttractionsGrid();
+      renderItinerary();
+    }
+
+    // ----------------------------------------------------
+    // THEME SWITCH SYSTEM
+    // ----------------------------------------------------
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        theme = 'dark';
+      }
+      localStorage.setItem('seoul_theme', theme);
+      updateThemeIcon();
+      showToast(theme === 'dark' ? '다크 모드로 전환되었습니다.' : '라이트 모드로 전환되었습니다.', 'info');
+    }
+
+    function updateThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      if (document.documentElement.classList.contains('dark')) {
+        icon.innerText = 'light_mode';
+      } else {
+        icon.innerText = 'dark_mode';
+      }
+    }
+
+    // ----------------------------------------------------
+    // DETAILS MODAL SYSTEM
+    // ----------------------------------------------------
+    function openDetailsModal(id) {
+      const attraction = ATTRACTION_DATA.find(a => a.id === id);
+      if (!attraction) return;
+      
+      document.getElementById('modal-img').src = attraction.image;
+      document.getElementById('modal-img').alt = attraction.title[currentLang] || attraction.title.en;
+      document.getElementById('modal-rating').innerText = attraction.rating.toFixed(1);
+      document.getElementById('modal-category').innerText = attraction.category[currentLang] || attraction.category.en;
+      document.getElementById('modal-title').innerText = attraction.title[currentLang] || attraction.title.en;
+      document.getElementById('modal-subtitle').innerText = attraction.subtitle[currentLang] || attraction.subtitle.en;
+      document.getElementById('modal-desc').innerText = attraction.desc[currentLang] || attraction.desc.en;
+      
+      document.getElementById('modal-addr-val').innerText = attraction.address[currentLang] || attraction.address.en;
+      document.getElementById('modal-hours-val').innerText = attraction.hours[currentLang] || attraction.hours.en;
+      document.getElementById('modal-fee-val').innerText = attraction.fee[currentLang] || attraction.fee.en;
+      document.getElementById('modal-metro-val').innerText = attraction.metro[currentLang] || attraction.metro.en;
+      
+      const mapBtn = document.getElementById('modal-map-btn');
+      mapBtn.onclick = () => viewOnMap(id);
+      
+      const itineraryBtn = document.getElementById('modal-itinerary-btn');
+      itineraryBtn.onclick = () => openDaySelectModal(id);
+      
+      const modal = document.getElementById('details-modal');
+      const card = document.getElementById('details-card');
+      
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeDetailsModal() {
+      const modal = document.getElementById('details-modal');
+      const card = document.getElementById('details-card');
+      
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 250);
+    }
+
+    function viewOnMap(id) {
+      closeDetailsModal();
+      
+      // Smooth scroll to map
+      const mapSection = document.getElementById('map');
+      if (mapSection) {
+        mapSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      // Highlight SVG pin
+      const pin = document.querySelector(`.map-pin[data-id="${id}"]`);
+      if (pin) {
+        pin.classList.add('pin-highlight');
+        setTimeout(() => {
+          const rect = pin.getBoundingClientRect();
+          const mapContainer = document.getElementById('map-container');
+          const containerRect = mapContainer.getBoundingClientRect();
+          
+          const mockEvent = {
+            clientX: rect.left + rect.width / 2,
+            clientY: rect.top + rect.height / 2
+          };
+          showMapTooltip(mockEvent, id);
+        }, 800);
+        
+        setTimeout(() => {
+          pin.classList.remove('pin-highlight');
+          hideMapTooltip();
+        }, 4500);
+      }
+    }
+
+    // ----------------------------------------------------
+    // MAP INTERACTIVITY
+    // ----------------------------------------------------
+    function showMapTooltip(event, id) {
+      const attraction = ATTRACTION_DATA.find(a => a.id === id);
+      if (!attraction) return;
+      
+      const tooltip = document.getElementById('map-tooltip');
+      const img = document.getElementById('tooltip-img');
+      const title = document.getElementById('tooltip-title');
+      const cat = document.getElementById('tooltip-category');
+      const rating = document.getElementById('tooltip-rating');
+      
+      img.src = attraction.image;
+      title.innerText = attraction.title[currentLang] || attraction.title.en;
+      cat.innerText = attraction.category[currentLang] || attraction.category.en;
+      rating.innerText = attraction.rating.toFixed(1);
+      
+      tooltip.classList.remove('hidden');
+      moveMapTooltip(event);
+    }
+
+    function moveMapTooltip(event) {
+      const tooltip = document.getElementById('map-tooltip');
+      const container = document.getElementById('map-container');
+      const rect = container.getBoundingClientRect();
+      
+      // Positioning coordinates relative to container
+      let x = event.clientX - rect.left + 15;
+      let y = event.clientY - rect.top + 15;
+      
+      // Prevention of spilling outside
+      if (x + 240 > rect.width) x = event.clientX - rect.left - 255;
+      if (y + 100 > rect.height) y = event.clientY - rect.top - 110;
+      
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y}px`;
+    }
+
+    function hideMapTooltip() {
+      const tooltip = document.getElementById('map-tooltip');
+      tooltip.classList.add('hidden');
+    }
+
+    // ----------------------------------------------------
+    // SEARCH OVERLAY SYSTEM
+    // ----------------------------------------------------
+    function openSearchModal() {
+      const modal = document.getElementById('search-modal');
+      const card = document.getElementById('search-card');
+      const input = document.getElementById('search-input');
+      
+      modal.classList.remove('hidden');
+      input.value = '';
+      performSearch(); // clear results state
+      
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+        input.focus();
+      }, 10);
+    }
+
+    function closeSearchModal() {
+      const modal = document.getElementById('search-modal');
+      const card = document.getElementById('search-card');
+      
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 250);
+    }
+
+    function performSearch() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const resultsContainer = document.getElementById('search-results');
+      resultsContainer.innerHTML = '';
+      
+      if (!query) {
+        resultsContainer.innerHTML = `
+          <div class="text-center py-lg text-on-surface-variant text-sm" data-t="searchPlaceholder">
+            ${UI_TRANSLATIONS[currentLang].searchPlaceholder}
+          </div>
+        `;
+        return;
+      }
+      
+      const matches = ATTRACTION_DATA.filter(a => {
+        const titleText = (a.title[currentLang] || a.title.en).toLowerCase();
+        const descText = (a.desc[currentLang] || a.desc.en).toLowerCase();
+        const catText = (a.category[currentLang] || a.category.en).toLowerCase();
+        return titleText.includes(query) || descText.includes(query) || catText.includes(query);
+      });
+      
+      if (matches.length === 0) {
+        resultsContainer.innerHTML = `
+          <div class="text-center py-lg text-on-surface-variant text-sm font-medium">
+            ${UI_TRANSLATIONS[currentLang].noResults}
+          </div>
+        `;
+        return;
+      }
+      
+      matches.forEach(attraction => {
+        const item = document.createElement('button');
+        item.className = 'flex items-center gap-md p-sm hover:bg-surface-container-high rounded-xl w-full text-left transition-colors border border-outline-variant/30 hover:border-outline bg-surface-container-low';
+        item.onclick = () => {
+          closeSearchModal();
+          openDetailsModal(attraction.id);
+        };
+        
+        const title = attraction.title[currentLang] || attraction.title.en;
+        const category = attraction.category[currentLang] || attraction.category.en;
+        const desc = attraction.desc[currentLang] || attraction.desc.en;
+        
+        item.innerHTML = `
+          <img src="${attraction.image}" class="w-12 h-12 object-cover rounded-lg shrink-0" alt="">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-xs">
+              <h4 class="font-bold text-xs text-on-surface truncate">${title}</h4>
+              <span class="text-[9px] font-bold text-primary bg-primary-fixed text-on-primary-fixed px-sm py-[2px] rounded-full shrink-0 uppercase tracking-wider">${category}</span>
+            </div>
+            <p class="text-[11px] text-on-surface-variant line-clamp-1 mt-[2px] leading-relaxed">${desc}</p>
+          </div>
+        `;
+        resultsContainer.appendChild(item);
+      });
+    }
+
+    // ----------------------------------------------------
+    // PORTAL TOASTS & CONTACTS & SHARE
+    // ----------------------------------------------------
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      
+      toast.className = 'flex items-center gap-sm px-md py-sm bg-inverse-surface text-inverse-on-surface shadow-2xl rounded-xl border border-outline-variant/60 pointer-events-auto transform translate-y-2 opacity-0 transition-all duration-300 max-w-sm';
+      
+      let icon = 'info';
+      if (type === 'success') icon = 'check_circle';
+      if (type === 'error') icon = 'error';
+      
+      toast.innerHTML = `
+        <span class="material-symbols-outlined text-primary text-lg">${icon}</span>
+        <span class="text-xs font-semibold">${message}</span>
+      `;
+      
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      }, 10);
+      
+      setTimeout(() => {
+        toast.classList.add('opacity-0', '-translate-y-2');
+        setTimeout(() => {
+          toast.remove();
+        }, 300);
+      }, 3500);
+    }
+
+    function openModal(id) {
+      const m = document.getElementById(id);
+      m.classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      m.classList.add('hidden');
+    }
+
+    function submitContactForm(event) {
+      event.preventDefault();
+      closeModal('contact-modal');
+      showToast(UI_TRANSLATIONS[currentLang].contactSuccess, 'success');
+      event.target.reset();
+    }
+
+    function copyURL() {
+      const dummy = document.createElement('input');
+      document.body.appendChild(dummy);
+      dummy.value = window.location.href;
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+      
+      const copyMsg = currentLang === 'ko' ? '사이트 주소가 클립보드에 복사되었습니다!' : 'Portal URL copied to clipboard!';
+      showToast(copyMsg, 'success');
+    }
+
+    function sharePortal() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Seoul Discovery Portal',
+          text: 'Explore the charm of Seoul, South Korea!',
+          url: window.location.href
+        })
+        .catch(err => {
+          copyURL();
+        });
+      } else {
+        copyURL();
+      }
+    }
+  </script>
+</body>
+</html>
