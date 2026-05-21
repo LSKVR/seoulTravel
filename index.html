@@ -299,11 +299,11 @@
     <a href="#" class="font-headline-md text-headline-md font-bold text-primary">Seoul Discovery</a>
     
     <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center space-x-md">
+    <div id="desktop-menu" class="hidden md:flex items-center space-x-md">
       <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#attractions" data-t="navAttractions">명소</a>
-      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200" href="#itineraries" data-t="navItineraries">일정 계획</a>
+      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200" href="#itineraries" data-t="navItineraries">일정계획</a>
       <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200" href="#map" data-t="navMap">지도</a>
-      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200" href="#tips" data-t="navTips">여행 가이드</a>
+      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200" href="#tips" data-t="navTips">여행가이드</a>
     </div>
     
     <!-- Controls -->
@@ -1039,9 +1039,9 @@
     const UI_TRANSLATIONS = {
       ko: {
         navAttractions: "명소",
-        navItineraries: "일정 계획",
+        navItineraries: "일정계획",
         navMap: "지도",
-        navTips: "여행 가이드",
+        navTips: "여행가이드",
         searchPlaceholder: "가고 싶은 명소를 검색하세요...",
         heroTitle: "서울의 매력을 발견하세요",
         heroDesc: "과거와 미래가 공존하는 한국의 심장부, 서울로 여러분을 초대합니다.",
@@ -1354,6 +1354,58 @@
           }
         });
       });
+
+      // 5. Navigation Active State (ScrollSpy & Click)
+      const menuLinks = document.querySelectorAll('#desktop-menu a');
+      const sections = Array.from(menuLinks).map(link => document.querySelector(link.getAttribute('href')));
+
+      function setActiveNavLink(hash) {
+        menuLinks.forEach(link => {
+          if (link.getAttribute('href') === hash) {
+            link.className = "text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm";
+          } else {
+            link.className = "text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors duration-200";
+          }
+        });
+      }
+
+      function updateActiveNav() {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 120; // offset for nav bar
+
+        sections.forEach(section => {
+          if (section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+              currentSectionId = '#' + section.getAttribute('id');
+            }
+          }
+        });
+
+        if (window.scrollY < 200) {
+          currentSectionId = '#attractions';
+        }
+
+        if (currentSectionId) {
+          setActiveNavLink(currentSectionId);
+        }
+      }
+
+      menuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          // Temporarily disable scroll spy during smooth scroll to prevent jumping styles
+          window.removeEventListener('scroll', updateActiveNav);
+          setActiveNavLink(link.getAttribute('href'));
+          
+          setTimeout(() => {
+            window.addEventListener('scroll', updateActiveNav);
+          }, 800);
+        });
+      });
+
+      window.addEventListener('scroll', updateActiveNav);
+      updateActiveNav();
     });
 
     // ----------------------------------------------------
