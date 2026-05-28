@@ -261,6 +261,7 @@
     .map-pin circle:last-child {
       transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       transform-origin: center;
+      transform-box: fill-box;
     }
     .map-pin:hover circle:last-child {
       transform: scale(1.3);
@@ -279,6 +280,7 @@
     .map-pin.pin-highlight circle:last-child {
       animation: pinHighlight 1s ease-in-out 3;
       transform-origin: center;
+      transform-box: fill-box;
     }
 
     /* Scrollbar styling */
