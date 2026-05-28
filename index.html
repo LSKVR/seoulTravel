@@ -257,10 +257,13 @@
     }
     .map-pin {
       cursor: pointer;
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .map-pin:hover {
-      transform: scale(1.25);
+    .map-pin circle:last-child {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+    }
+    .map-pin:hover circle:last-child {
+      transform: scale(1.3);
     }
     
     /* Highlight animation when searching or focusing pin */
@@ -273,8 +276,9 @@
         filter: drop-shadow(0 0 16px var(--primary));
       }
     }
-    .map-pin.pin-highlight {
+    .map-pin.pin-highlight circle:last-child {
       animation: pinHighlight 1s ease-in-out 3;
+      transform-origin: center;
     }
 
     /* Scrollbar styling */
@@ -356,7 +360,8 @@
       <p class="font-body-lg text-body-lg max-w-2xl opacity-90" data-t="heroDesc">
         과거와 미래가 공존하는 한국의 심장부, 서울로 여러분을 초대합니다.
       </p>
-      <div class="flex items-center gap-sm mt-lg opacity-90 bg-black/40 px-lg py-sm rounded-full backdrop-blur-md border border-white/20 hover:bg-black/60 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+      <div class="flex items-center gap-sm mt-lg opacity-90 bg-black/40 pl-2 py-2 pr-6 rounded-full backdrop-blur-md border border-white/20 hover:bg-black/60 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+        <img src="img/img.jpg" alt="만든이 사진" class="w-16 h-16 rounded-full object-cover border-2 border-white/60 shrink-0">
         <span class="material-symbols-outlined text-[18px] text-blue-400">code</span>
         <p class="font-body-sm text-body-sm font-semibold tracking-wide text-white" data-t="heroCreator">만든이: 여주대학교 소프트웨어융합과 20210359 이상경</p>
       </div>
@@ -492,52 +497,52 @@
 
           <!-- Interactive Pins -->
           <!-- 1. Gyeongbokgung -->
-          <g class="map-pin" data-id="gyeongbokgung" transform="translate(450, 230)" onclick="openDetailsModal('gyeongbokgung')" onmouseenter="showMapTooltip(event, 'gyeongbokgung')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="gyeongbokgung" transform="translate(450, 230)" onclick="openDetailsModal('gyeongbokgung', true)" onmouseenter="showMapTooltip(event, 'gyeongbokgung')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 2. N Seoul Tower -->
-          <g class="map-pin" data-id="nseoultower" transform="translate(490, 380)" onclick="openDetailsModal('nseoultower')" onmouseenter="showMapTooltip(event, 'nseoultower')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="nseoultower" transform="translate(490, 380)" onclick="openDetailsModal('nseoultower', true)" onmouseenter="showMapTooltip(event, 'nseoultower')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 3. Bukchon Hanok -->
-          <g class="map-pin" data-id="bukchon" transform="translate(485, 200)" onclick="openDetailsModal('bukchon')" onmouseenter="showMapTooltip(event, 'bukchon')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="bukchon" transform="translate(485, 200)" onclick="openDetailsModal('bukchon', true)" onmouseenter="showMapTooltip(event, 'bukchon')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 4. Myeongdong -->
-          <g class="map-pin" data-id="myeongdong" transform="translate(460, 310)" onclick="openDetailsModal('myeongdong')" onmouseenter="showMapTooltip(event, 'myeongdong')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="myeongdong" transform="translate(460, 310)" onclick="openDetailsModal('myeongdong', true)" onmouseenter="showMapTooltip(event, 'myeongdong')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 5. Lotte World Tower -->
-          <g class="map-pin" data-id="lotteworldtower" transform="translate(750, 480)" onclick="openDetailsModal('lotteworldtower')" onmouseenter="showMapTooltip(event, 'lotteworldtower')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="lotteworldtower" transform="translate(750, 480)" onclick="openDetailsModal('lotteworldtower', true)" onmouseenter="showMapTooltip(event, 'lotteworldtower')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 6. DDP -->
-          <g class="map-pin" data-id="ddp" transform="translate(540, 290)" onclick="openDetailsModal('ddp')" onmouseenter="showMapTooltip(event, 'ddp')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="ddp" transform="translate(540, 290)" onclick="openDetailsModal('ddp', true)" onmouseenter="showMapTooltip(event, 'ddp')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 7. Han River Park -->
-          <g class="map-pin" data-id="hanriver" transform="translate(300, 480)" onclick="openDetailsModal('hanriver')" onmouseenter="showMapTooltip(event, 'hanriver')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="hanriver" transform="translate(300, 480)" onclick="openDetailsModal('hanriver', true)" onmouseenter="showMapTooltip(event, 'hanriver')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 8. Insadong -->
-          <g class="map-pin" data-id="insadong" transform="translate(500, 245)" onclick="openDetailsModal('insadong')" onmouseenter="showMapTooltip(event, 'insadong')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="insadong" transform="translate(500, 245)" onclick="openDetailsModal('insadong', true)" onmouseenter="showMapTooltip(event, 'insadong')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 9. Namdaemun Market -->
-          <g class="map-pin" data-id="namdaemun" transform="translate(425, 315)" onclick="openDetailsModal('namdaemun')" onmouseenter="showMapTooltip(event, 'namdaemun')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="namdaemun" transform="translate(425, 315)" onclick="openDetailsModal('namdaemun', true)" onmouseenter="showMapTooltip(event, 'namdaemun')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
           <!-- 10. Cheonggyecheon -->
-          <g class="map-pin" data-id="cheonggyecheon" transform="translate(520, 265)" onclick="openDetailsModal('cheonggyecheon')" onmouseenter="showMapTooltip(event, 'cheonggyecheon')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
+          <g class="map-pin" data-id="cheonggyecheon" transform="translate(520, 265)" onclick="openDetailsModal('cheonggyecheon', true)" onmouseenter="showMapTooltip(event, 'cheonggyecheon')" onmouseleave="hideMapTooltip()" onmousemove="moveMapTooltip(event)">
             <circle r="16" class="fill-primary/20 pin-ripple" />
             <circle r="7" class="fill-primary stroke-surface-container-lowest stroke-2" />
           </g>
@@ -666,7 +671,6 @@
       <button onclick="openModal('privacy-modal')" class="text-left text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" data-t="footerPrivacy">Privacy Policy</button>
       <button onclick="openModal('terms-modal')" class="text-left text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" data-t="footerTerms">Terms of Service</button>
       <button onclick="openModal('contact-modal')" class="text-left text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" data-t="footerContact">Contact Us</button>
-      <a class="text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" href="https://korean.visitseoul.net/index" target="_blank" data-t="footerOfficial">Official Tourism Portal</a>
     </div>
     
     <!-- Socials & Share -->
@@ -1303,6 +1307,7 @@
     let itinerary = JSON.parse(localStorage.getItem('seoul_itinerary')) || { 1: [], 2: [] };
     let theme = localStorage.getItem('seoul_theme') || 'light';
     let activeAttractionId = null;
+    let openedFromMap = false;
 
     // ----------------------------------------------------
     // INITIALIZATION & LIFECYCLE
@@ -1777,7 +1782,8 @@
     // ----------------------------------------------------
     // DETAILS MODAL SYSTEM
     // ----------------------------------------------------
-    function openDetailsModal(id) {
+    function openDetailsModal(id, fromMap = false) {
+      openedFromMap = fromMap;
       const attraction = ATTRACTION_DATA.find(a => a.id === id);
       if (!attraction) return;
       
@@ -1824,16 +1830,21 @@
     function viewOnMap(id) {
       closeDetailsModal();
       
-      // Smooth scroll to map
-      const mapSection = document.getElementById('map');
-      if (mapSection) {
-        mapSection.scrollIntoView({ behavior: 'smooth' });
+      // Smooth scroll to map only if not opened from map
+      if (!openedFromMap) {
+        const mapSection = document.getElementById('map');
+        if (mapSection) {
+          mapSection.scrollIntoView({ behavior: 'smooth' });
+        }
       }
       
       // Highlight SVG pin
       const pin = document.querySelector(`.map-pin[data-id="${id}"]`);
       if (pin) {
         pin.classList.add('pin-highlight');
+        
+        // Show tooltip instantly if we don't scroll
+        const delay = openedFromMap ? 0 : 800;
         setTimeout(() => {
           const rect = pin.getBoundingClientRect();
           const mapContainer = document.getElementById('map-container');
@@ -1844,7 +1855,7 @@
             clientY: rect.top + rect.height / 2
           };
           showMapTooltip(mockEvent, id);
-        }, 800);
+        }, delay);
         
         setTimeout(() => {
           pin.classList.remove('pin-highlight');
