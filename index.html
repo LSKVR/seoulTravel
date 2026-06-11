@@ -23,6 +23,8 @@
   
   <!-- Tailwind CSS CDN with custom config -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -766,6 +768,10 @@
             <span class="material-symbols-outlined text-sm">explore</span>
             <span data-t="viewOnMapBtn">지도에서 보기</span>
           </button>
+          <button id="modal-reviews-btn" class="flex-1 px-md py-sm bg-tertiary-container text-on-tertiary-container font-bold rounded-xl text-xs hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-xs">
+            <span class="material-symbols-outlined text-sm">rate_review</span>
+            <span data-t="reviewsTitle">리뷰</span>
+          </button>
           <button onclick="closeDetailsModal()" class="px-md py-sm border border-outline text-on-surface-variant font-bold rounded-xl text-xs hover:bg-surface-container transition-colors flex items-center justify-center" data-t="closeBtn">
             닫기
           </button>
@@ -807,6 +813,98 @@
         <button onclick="closeDaySelectModal()" class="w-full py-sm border border-outline text-on-surface-variant rounded-xl hover:bg-surface-container transition-colors font-bold" data-t="closeBtn">
           닫기
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Reviews & Comments Modal -->
+  <div id="reviews-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md hidden">
+    <!-- Modal Box -->
+    <div id="reviews-card" class="bg-surface-container-lowest text-on-surface max-w-2xl w-full mx-4 rounded-2xl shadow-2xl border border-outline-variant overflow-hidden flex flex-col max-h-[90vh] md:max-h-[85vh] transition-all duration-300 scale-95 opacity-0">
+      
+      <!-- Header -->
+      <div class="px-lg py-md border-b border-outline-variant/60 flex justify-between items-center bg-surface-container-low shrink-0">
+        <div>
+          <h3 class="font-headline-md text-xl font-bold noto-serif text-primary flex items-center gap-sm">
+            <span class="material-symbols-outlined text-primary text-2xl">rate_review</span>
+            <span id="reviews-modal-title" data-t="reviewsTitle">리뷰 및 댓글</span>
+          </h3>
+          <p id="reviews-modal-subtitle" class="text-xs text-on-surface-variant font-medium mt-[2px]">소중한 리뷰를 확인하고 작성해보세요.</p>
+        </div>
+        <div class="flex items-center gap-xs">
+          <!-- Cog icon to configure Supabase anytime -->
+          <button onclick="toggleSupabaseConfigView()" title="Supabase 설정" class="material-symbols-outlined text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container p-xs transition-colors">settings</button>
+          <button onclick="closeReviewsModal()" class="material-symbols-outlined text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container p-xs transition-colors">close</button>
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="flex-1 overflow-y-auto p-lg flex flex-col min-h-0 bg-surface">
+        
+        <!-- Supabase Configuration View (Toggled via button or shown by default if not configured) -->
+        <div id="supabase-config-view" class="hidden flex-col items-center justify-center py-lg max-w-md mx-auto text-center">
+          <span class="material-symbols-outlined text-[48px] text-tertiary mb-md">database</span>
+          <h4 class="font-bold text-base text-on-surface mb-xs" data-t="supabaseConfigTitle">Supabase 연결 설정</h4>
+          <p class="text-xs text-on-surface-variant mb-lg leading-relaxed" data-t="supabaseConfigDesc">
+            댓글/리뷰는 클라우드 데이터베이스인 Supabase에 저장됩니다. 서비스 활성화를 위해 URL과 Anon Key를 입력해주세요.
+          </p>
+          <form onsubmit="saveSupabaseConfig(event)" class="w-full space-y-md text-left">
+            <div>
+              <label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-xs">SUPABASE URL</label>
+              <input type="url" id="sb-url-input" placeholder="https://your-project.supabase.co" required class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-sm">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-xs">SUPABASE ANON KEY</label>
+              <input type="password" id="sb-key-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-sm">
+            </div>
+            <div class="flex gap-sm pt-sm">
+              <button type="submit" class="flex-1 py-sm bg-primary text-on-primary font-bold rounded-xl text-xs hover:bg-primary-container transition-colors shadow-md" data-t="connectBtn">연결하기</button>
+              <button type="button" id="sb-disconnect-btn" onclick="disconnectSupabase()" class="hidden px-md py-sm border border-outline text-error font-bold rounded-xl text-xs hover:bg-error-container transition-colors" data-t="disconnectBtn">연결 해제</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Normal Reviews View (Hidden if configuring) -->
+        <div id="reviews-content-view" class="flex flex-col flex-1 min-h-0 gap-lg">
+          
+          <!-- Reviews list container -->
+          <div class="flex-1 min-h-0 flex flex-col">
+            <h4 class="font-bold text-xs text-on-surface-variant uppercase tracking-wider mb-sm flex justify-between">
+              <span id="reviews-list-heading">리뷰 목록</span>
+              <span id="reviews-count" class="text-xs text-primary font-bold">0 reviews</span>
+            </h4>
+            
+            <!-- List scroll area -->
+            <div id="reviews-list-container" class="flex-1 overflow-y-auto border border-outline-variant/40 rounded-xl p-md bg-surface-container-lowest space-y-md min-h-[180px]">
+              <!-- Loaded dynamically -->
+            </div>
+          </div>
+          
+          <!-- Review Form -->
+          <div class="shrink-0 border-t border-outline-variant/60 pt-lg">
+            <h4 class="font-bold text-xs text-on-surface-variant uppercase tracking-wider mb-sm" data-t="writeReview">리뷰 작성하기</h4>
+            <form onsubmit="submitReview(event)" class="space-y-sm">
+              <div>
+                <!-- Nickname -->
+                <label class="block text-[10px] font-bold text-on-surface-variant mb-xs" data-t="nicknameLabel">닉네임</label>
+                <input type="text" id="review-nickname" required class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-xs focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-xs">
+              </div>
+              <!-- Comment -->
+              <div>
+                <textarea id="review-comment" required rows="2" data-t-placeholder="commentPlaceholder" placeholder="방문 후기와 팁을 남겨주세요..." class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-xs leading-relaxed"></textarea>
+              </div>
+              <!-- Submit button -->
+              <div class="flex justify-end">
+                <button type="submit" class="px-lg py-sm bg-primary text-on-primary font-bold rounded-xl text-xs hover:bg-primary-container transition-colors shadow-md flex items-center gap-xs">
+                  <span class="material-symbols-outlined text-sm">send</span>
+                  <span data-t="submitReviewBtn">리뷰 등록</span>
+                </button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+        
       </div>
     </div>
   </div>
@@ -1118,7 +1216,24 @@
         mapNamsan: "남산",
         mapBukhansan: "북한산",
         mapTitle: "서울 명소 지도",
-        mapSub: "지도에서 만나보는 서울 10대 명소"
+        mapSub: "지도에서 만나보는 서울 10대 명소",
+        reviewsTitle: "리뷰 및 댓글",
+        writeReview: "리뷰 작성하기",
+        nicknameLabel: "닉네임",
+        ratingLabel: "평점",
+        commentPlaceholder: "방문 후기와 팁을 남겨주세요...",
+        submitReviewBtn: "리뷰 등록",
+        noReviewsText: "아직 작성된 리뷰가 없습니다. 첫 번째 리뷰를 남겨주세요!",
+        supabaseConfigTitle: "Supabase 연결 설정",
+        supabaseConfigDesc: "댓글/리뷰는 클라우드 데이터베이스인 Supabase에 저장됩니다. 서비스 활성화를 위해 URL과 Anon Key를 입력해주세요.",
+        connectBtn: "연결하기",
+        disconnectBtn: "연결 해제",
+        requiredFieldsError: "모든 필드를 입력해주세요.",
+        dbConfigSuccess: "Supabase 데이터베이스가 연결되었습니다!",
+        dbConfigError: "연결에 실패했습니다. 키를 다시 확인해주세요.",
+        reviewSubmitSuccess: "리뷰가 등록되었습니다!",
+        reviewSubmitError: "리뷰 등록 중 오류가 발생했습니다.",
+        reviewFetchError: "리뷰를 가져올 수 없습니다."
       },
       en: {
         navAttractions: "Attractions",
@@ -1181,7 +1296,24 @@
         mapNamsan: "Namsan",
         mapBukhansan: "Bukhansan",
         mapTitle: "Seoul Attractions Map",
-        mapSub: "Top 10 Must-Visit Attractions on Map"
+        mapSub: "Top 10 Must-Visit Attractions on Map",
+        reviewsTitle: "Reviews & Comments",
+        writeReview: "Write a Review",
+        nicknameLabel: "Nickname",
+        ratingLabel: "Rating",
+        commentPlaceholder: "Share your experience and tips...",
+        submitReviewBtn: "Submit Review",
+        noReviewsText: "No reviews yet. Be the first to leave a review!",
+        supabaseConfigTitle: "Supabase Configuration",
+        supabaseConfigDesc: "Reviews are stored in Supabase. Please enter your Supabase URL and Anon Key to activate reviews.",
+        connectBtn: "Connect",
+        disconnectBtn: "Disconnect",
+        requiredFieldsError: "Please fill in all fields.",
+        dbConfigSuccess: "Supabase connected successfully!",
+        dbConfigError: "Connection failed. Please check your keys.",
+        reviewSubmitSuccess: "Review submitted successfully!",
+        reviewSubmitError: "Failed to submit review.",
+        reviewFetchError: "Failed to load reviews."
       },
       zh: {
         navAttractions: "景点",
@@ -1244,7 +1376,24 @@
         mapNamsan: "南山",
         mapBukhansan: "北汉山",
         mapTitle: "首尔景点地图",
-        mapSub: "在地图上探索首尔十大必访景点"
+        mapSub: "在地图上探索首尔十大必访景点",
+        reviewsTitle: "评价与留言",
+        writeReview: "撰写评价",
+        nicknameLabel: "昵称",
+        ratingLabel: "评分",
+        commentPlaceholder: "分享您的体验和旅行建议...",
+        submitReviewBtn: "提交评价",
+        noReviewsText: "暂无评价。来写第一条评价吧！",
+        supabaseConfigTitle: "Supabase 连接设置",
+        supabaseConfigDesc: "评论和评价将保存在 Supabase 中。请输入 URL 和 Anon Key 以启用评价功能。",
+        connectBtn: "连接",
+        disconnectBtn: "断开连接",
+        requiredFieldsError: "请填写所有必填项。",
+        dbConfigSuccess: "Supabase 连接成功！",
+        dbConfigError: "连接失败，请检查您的配置。",
+        reviewSubmitSuccess: "评价提交成功！",
+        reviewSubmitError: "评价提交失败，请重试。",
+        reviewFetchError: "无法加载评价列表."
       },
       ja: {
         navAttractions: "名所",
@@ -1307,7 +1456,24 @@
         mapNamsan: "南山",
         mapBukhansan: "北漢山",
         mapTitle: "ソウル名所地図",
-        mapSub: "地図で見るソウルのおすすめ10大名所"
+        mapSub: "地図で見るソウルのおすすめ10大名所",
+        reviewsTitle: "レビュー・コメント",
+        writeReview: "レビューを書く",
+        nicknameLabel: "ニックネーム",
+        ratingLabel: "評価",
+        commentPlaceholder: "訪問時の感想やコツを共有しましょう...",
+        submitReviewBtn: "レビューを登録",
+        noReviewsText: "まだレビューがありません。最初のレビューを書いてみましょう！",
+        supabaseConfigTitle: "Supabase 接続設定",
+        supabaseConfigDesc: "コメントはSupabaseに保存されます。レビュー機能を有効にするため、URLとAnon Keyを入力してください。",
+        connectBtn: "接続する",
+        disconnectBtn: "接続解除",
+        requiredFieldsError: "すべての項目を入力してください。",
+        dbConfigSuccess: "Supabaseに正常に接続されました！",
+        dbConfigError: "接続に失敗しました。キーを再度確認してください。",
+        reviewSubmitSuccess: "レビューが登録されました！",
+        reviewSubmitError: "レビューの登録に失败しました。",
+        reviewFetchError: "レビューを読み込めませんでした。"
       }
     };
 
@@ -1319,6 +1485,34 @@
     let theme = localStorage.getItem('seoul_theme') || 'light';
     let activeAttractionId = null;
     let openedFromMap = false;
+
+    // Supabase State variables
+    let supabaseUrl = localStorage.getItem('supabase_url') || 'https://aksjwalhsfkzfjcxtunz.supabase.co';
+    let supabaseKey = localStorage.getItem('supabase_anon_key') || 'sb_publishable_jbYITcPbh_kmAo1YxSGolA_UFm0bk7L';
+    let supabaseClient = null;
+
+    function initSupabase() {
+      if (supabaseUrl && supabaseKey) {
+        // Clean URL if it ends with /rest/v1/ or /rest/v1
+        let cleanedUrl = supabaseUrl.trim();
+        if (cleanedUrl.endsWith('/rest/v1/')) {
+          cleanedUrl = cleanedUrl.slice(0, -9);
+        } else if (cleanedUrl.endsWith('/rest/v1')) {
+          cleanedUrl = cleanedUrl.slice(0, -8);
+        }
+        try {
+          supabaseClient = window.supabase.createClient(cleanedUrl, supabaseKey);
+          return true;
+        } catch (e) {
+          console.error("Failed to initialize Supabase:", e);
+          supabaseClient = null;
+          return false;
+        }
+      }
+      supabaseClient = null;
+      return false;
+    }
+    initSupabase();
 
     // ----------------------------------------------------
     // INITIALIZATION & LIFECYCLE
@@ -1365,6 +1559,12 @@
         const detailsModal = document.getElementById('details-modal');
         if (e.target === detailsModal) {
           closeDetailsModal();
+        }
+
+        // Reviews Modal
+        const reviewsModal = document.getElementById('reviews-modal');
+        if (e.target === reviewsModal) {
+          closeReviewsModal();
         }
 
         // Search Modal
@@ -1451,7 +1651,7 @@
       
       ATTRACTION_DATA.forEach(attraction => {
         const card = document.createElement('div');
-        card.className = 'group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 opacity-0 translate-y-10 flex flex-col h-[340px]';
+        card.className = 'group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 opacity-0 translate-y-10 flex flex-col h-[365px]';
         card.setAttribute('data-id', attraction.id);
         
         const title = attraction.title[currentLang] || attraction.title.en;
@@ -1459,6 +1659,9 @@
         const subTitle = attraction.subtitle[currentLang] || attraction.subtitle.en;
         const ratingStr = attraction.rating.toFixed(1);
         
+        const addBtnText = { ko: '일정 추가', en: 'Add Stop', zh: '加入行程', ja: '日程追加' }[currentLang] || 'Add';
+        const reviewBtnText = { ko: '리뷰', en: 'Reviews', zh: '评价', ja: 'レビュー' }[currentLang] || 'Reviews';
+
         card.innerHTML = `
           <div class="h-44 overflow-hidden relative shrink-0">
             <img alt="${title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${attraction.image}"/>
@@ -1474,13 +1677,17 @@
               </div>
               <p class="text-[11px] text-on-surface-variant line-clamp-1 mb-md">${subTitle}</p>
             </div>
-            <div class="flex flex-col gap-xs mt-auto">
-              <button onclick="openDetailsModal('${attraction.id}')" class="w-full py-xs border border-outline text-primary hover:bg-primary hover:text-on-primary font-bold rounded-xl transition-colors text-[11px] flex items-center justify-center gap-xs">
+            <div class="grid grid-cols-2 gap-xs mt-auto">
+              <button onclick="openDetailsModal('${attraction.id}')" class="col-span-2 py-xs border border-outline text-primary hover:bg-primary hover:text-on-primary font-bold rounded-xl transition-colors text-[11px] flex items-center justify-center gap-xs">
                 <span>${UI_TRANSLATIONS[currentLang].cardBtn}</span>
               </button>
-              <button onclick="openDaySelectModal('${attraction.id}')" class="w-full py-xs bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold rounded-xl transition-colors text-[11px] flex items-center justify-center gap-xs">
+              <button onclick="openDaySelectModal('${attraction.id}')" class="py-xs bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold rounded-xl transition-colors text-[11px] flex items-center justify-center gap-xs">
                 <span class="material-symbols-outlined text-sm">add</span>
-                <span>${UI_TRANSLATIONS[currentLang].addToItineraryBtn}</span>
+                <span>${addBtnText}</span>
+              </button>
+              <button onclick="openReviewsModal('${attraction.id}')" class="py-xs bg-secondary-container hover:bg-surface-container-highest text-on-secondary-container font-semibold rounded-xl transition-colors text-[11px] flex items-center justify-center gap-xs">
+                <span class="material-symbols-outlined text-sm">rate_review</span>
+                <span>${reviewBtnText}</span>
               </button>
             </div>
           </div>
@@ -1817,6 +2024,12 @@
       const itineraryBtn = document.getElementById('modal-itinerary-btn');
       itineraryBtn.onclick = () => openDaySelectModal(id);
       
+      const reviewsBtn = document.getElementById('modal-reviews-btn');
+      reviewsBtn.onclick = () => {
+        closeDetailsModal();
+        openReviewsModal(id);
+      };
+      
       const modal = document.getElementById('details-modal');
       const card = document.getElementById('details-card');
       
@@ -2064,6 +2277,260 @@
       
       const copyMsg = currentLang === 'ko' ? '사이트 주소가 클립보드에 복사되었습니다!' : 'Portal URL copied to clipboard!';
       showToast(copyMsg, 'success');
+    }
+
+    // ----------------------------------------------------
+    // REVIEWS & SUPABASE SYSTEM
+    // ----------------------------------------------------
+    function openReviewsModal(id) {
+      activeAttractionId = id;
+      const attraction = ATTRACTION_DATA.find(a => a.id === id);
+      if (!attraction) return;
+
+      const title = attraction.title[currentLang] || attraction.title.en;
+      
+      // Update Title & Subtitle in Modal
+      document.getElementById('reviews-modal-title').innerText = `${title} - ${UI_TRANSLATIONS[currentLang].reviewsTitle}`;
+      
+      // Reset Form fields
+      document.getElementById('review-nickname').value = '';
+      document.getElementById('review-comment').value = '';
+
+      // Check Supabase connection state and toggle views
+      const configView = document.getElementById('supabase-config-view');
+      const contentView = document.getElementById('reviews-content-view');
+      
+      if (!supabaseClient) {
+        // Not configured, show connection form
+        configView.classList.remove('hidden');
+        contentView.classList.add('hidden');
+        document.getElementById('sb-url-input').value = supabaseUrl;
+        document.getElementById('sb-key-input').value = supabaseKey;
+        document.getElementById('sb-disconnect-btn').classList.add('hidden');
+      } else {
+        // Connected, show review lists
+        configView.classList.add('hidden');
+        contentView.classList.remove('hidden');
+        loadReviews(id);
+      }
+
+      // Show Modal
+      const modal = document.getElementById('reviews-modal');
+      const card = document.getElementById('reviews-card');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeReviewsModal() {
+      const modal = document.getElementById('reviews-modal');
+      const card = document.getElementById('reviews-card');
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        activeAttractionId = null;
+      }, 250);
+    }
+
+    async function loadReviews(id) {
+      const container = document.getElementById('reviews-list-container');
+      const countLabel = document.getElementById('reviews-count');
+      
+      // Loading State
+      container.innerHTML = `
+        <div class="flex flex-col items-center justify-center py-lg text-on-surface-variant gap-sm">
+          <div class="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+          <span class="text-xs">Loading reviews...</span>
+        </div>
+      `;
+      countLabel.innerText = '';
+
+      if (!supabaseClient) {
+        container.innerHTML = `
+          <div class="text-center py-md text-on-surface-variant text-xs italic">
+            ${UI_TRANSLATIONS[currentLang].supabaseConfigDesc}
+          </div>
+        `;
+        return;
+      }
+
+      try {
+        const { data, error } = await supabaseClient
+          .from('review')
+          .select('*')
+          .eq('replace', id);
+
+        if (error) throw error;
+
+        countLabel.innerText = `${data.length} ${currentLang === 'ko' ? '개' : 'reviews'}`;
+        container.innerHTML = '';
+
+        if (data.length === 0) {
+          container.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-lg text-on-surface-variant text-center gap-sm">
+              <span class="material-symbols-outlined text-[36px] text-outline-variant">chat_bubble_outline</span>
+              <p class="text-xs font-medium">${UI_TRANSLATIONS[currentLang].noReviewsText}</p>
+            </div>
+          `;
+          return;
+        }
+
+        data.forEach(review => {
+          const item = document.createElement('div');
+          item.className = 'flex gap-md p-sm bg-surface-container-low border border-outline-variant/30 rounded-xl hover:shadow-sm transition-shadow';
+          
+          // Generate Avatar (using review.name which holds the nickname)
+          const initial = review.name ? review.name.charAt(0).toUpperCase() : 'U';
+
+          item.innerHTML = `
+            <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs shrink-0 select-none">
+              ${initial}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-center mb-xs">
+                <span class="font-bold text-xs text-on-surface truncate max-w-[150px]">${review.name || 'Anonymous'}</span>
+              </div>
+              <p class="text-xs text-on-surface-variant leading-relaxed break-all whitespace-pre-wrap">${review.content}</p>
+            </div>
+          `;
+          container.appendChild(item);
+        });
+
+      } catch (err) {
+        console.error("Error loading reviews:", err);
+        const detail = err.message || err;
+        showToast(`${UI_TRANSLATIONS[currentLang].reviewFetchError}: ${detail}`, 'error');
+        container.innerHTML = `
+          <div class="text-center py-md text-error text-xs font-semibold">
+            ${UI_TRANSLATIONS[currentLang].reviewFetchError}
+            <div class="text-[10px] opacity-80 mt-xs">${detail}</div>
+          </div>
+        `;
+      }
+    }
+
+    async function submitReview(event) {
+      event.preventDefault();
+      
+      const nicknameInput = document.getElementById('review-nickname');
+      const commentInput = document.getElementById('review-comment');
+      
+      const nickname = nicknameInput.value.trim();
+      const comment = commentInput.value.trim();
+
+      if (!nickname || !comment) {
+        showToast(UI_TRANSLATIONS[currentLang].requiredFieldsError, 'error');
+        return;
+      }
+
+      if (!supabaseClient) {
+        showToast(UI_TRANSLATIONS[currentLang].supabaseConfigDesc, 'error');
+        return;
+      }
+
+      try {
+        const { error } = await supabaseClient
+          .from('review')
+          .insert([{
+            name: nickname,
+            replace: activeAttractionId,
+            content: comment
+          }]);
+
+        if (error) throw error;
+
+        showToast(UI_TRANSLATIONS[currentLang].reviewSubmitSuccess, 'success');
+        commentInput.value = '';
+        
+        // Reload comments
+        loadReviews(activeAttractionId);
+
+      } catch (err) {
+        console.error("Error submitting review:", err);
+        const detail = err.message || err;
+        showToast(`${UI_TRANSLATIONS[currentLang].reviewSubmitError}: ${detail}`, 'error');
+      }
+    }
+
+    function toggleSupabaseConfigView() {
+      const configView = document.getElementById('supabase-config-view');
+      const contentView = document.getElementById('reviews-content-view');
+      
+      if (configView.classList.contains('hidden')) {
+        configView.classList.remove('hidden');
+        contentView.classList.add('hidden');
+        document.getElementById('sb-url-input').value = supabaseUrl;
+        document.getElementById('sb-key-input').value = supabaseKey;
+        
+        if (supabaseClient) {
+          document.getElementById('sb-disconnect-btn').classList.remove('hidden');
+        } else {
+          document.getElementById('sb-disconnect-btn').classList.add('hidden');
+        }
+      } else {
+        configView.classList.add('hidden');
+        contentView.classList.remove('hidden');
+        if (activeAttractionId) {
+          loadReviews(activeAttractionId);
+        }
+      }
+    }
+
+    function saveSupabaseConfig(event) {
+      event.preventDefault();
+      
+      const url = document.getElementById('sb-url-input').value.trim();
+      const key = document.getElementById('sb-key-input').value.trim();
+
+      if (!url || !key) {
+        showToast(UI_TRANSLATIONS[currentLang].requiredFieldsError, 'error');
+        return;
+      }
+
+      // Temporarily store credentials
+      supabaseUrl = url;
+      supabaseKey = key;
+
+      // Try connection
+      const success = initSupabase();
+
+      if (success) {
+        localStorage.setItem('supabase_url', url);
+        localStorage.setItem('supabase_anon_key', key);
+        showToast(UI_TRANSLATIONS[currentLang].dbConfigSuccess, 'success');
+        
+        // Toggle view back to comments
+        document.getElementById('supabase-config-view').classList.add('hidden');
+        document.getElementById('reviews-content-view').classList.remove('hidden');
+        
+        if (activeAttractionId) {
+          loadReviews(activeAttractionId);
+        }
+      } else {
+        showToast(UI_TRANSLATIONS[currentLang].dbConfigError, 'error');
+      }
+    }
+
+    function disconnectSupabase() {
+      localStorage.removeItem('supabase_url');
+      localStorage.removeItem('supabase_anon_key');
+      supabaseUrl = '';
+      supabaseKey = '';
+      supabaseClient = null;
+      
+      showToast(currentLang === 'ko' ? '데이터베이스 연결이 해제되었습니다.' : 'Disconnected from database.', 'info');
+      
+      // Update UI Views
+      document.getElementById('sb-url-input').value = '';
+      document.getElementById('sb-key-input').value = '';
+      document.getElementById('sb-disconnect-btn').classList.add('hidden');
+      
+      if (activeAttractionId) {
+        loadReviews(activeAttractionId);
+      }
     }
 
     function sharePortal() {
