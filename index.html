@@ -832,8 +832,6 @@
           <p id="reviews-modal-subtitle" class="text-xs text-on-surface-variant font-medium mt-[2px]">소중한 리뷰를 확인하고 작성해보세요.</p>
         </div>
         <div class="flex items-center gap-xs">
-          <!-- Cog icon to configure Supabase anytime -->
-          <button onclick="toggleSupabaseConfigView()" title="Supabase 설정" class="material-symbols-outlined text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container p-xs transition-colors">settings</button>
           <button onclick="closeReviewsModal()" class="material-symbols-outlined text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container p-xs transition-colors">close</button>
         </div>
       </div>
@@ -841,28 +839,7 @@
       <!-- Main Body -->
       <div class="flex-1 overflow-y-auto p-lg flex flex-col min-h-0 bg-surface">
         
-        <!-- Supabase Configuration View (Toggled via button or shown by default if not configured) -->
-        <div id="supabase-config-view" class="hidden flex-col items-center justify-center py-lg max-w-md mx-auto text-center">
-          <span class="material-symbols-outlined text-[48px] text-tertiary mb-md">database</span>
-          <h4 class="font-bold text-base text-on-surface mb-xs" data-t="supabaseConfigTitle">Supabase 연결 설정</h4>
-          <p class="text-xs text-on-surface-variant mb-lg leading-relaxed" data-t="supabaseConfigDesc">
-            댓글/리뷰는 클라우드 데이터베이스인 Supabase에 저장됩니다. 서비스 활성화를 위해 URL과 Anon Key를 입력해주세요.
-          </p>
-          <form onsubmit="saveSupabaseConfig(event)" class="w-full space-y-md text-left">
-            <div>
-              <label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-xs">SUPABASE URL</label>
-              <input type="url" id="sb-url-input" placeholder="https://your-project.supabase.co" required class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-sm">
-            </div>
-            <div>
-              <label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-xs">SUPABASE ANON KEY</label>
-              <input type="password" id="sb-key-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required class="w-full bg-surface-container-low border border-outline-variant/60 rounded-xl px-md py-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface text-sm">
-            </div>
-            <div class="flex gap-sm pt-sm">
-              <button type="submit" class="flex-1 py-sm bg-primary text-on-primary font-bold rounded-xl text-xs hover:bg-primary-container transition-colors shadow-md" data-t="connectBtn">연결하기</button>
-              <button type="button" id="sb-disconnect-btn" onclick="disconnectSupabase()" class="hidden px-md py-sm border border-outline text-error font-bold rounded-xl text-xs hover:bg-error-container transition-colors" data-t="disconnectBtn">연결 해제</button>
-            </div>
-          </form>
-        </div>
+        <!-- Supabase Configuration View Removed -->
 
         <!-- Normal Reviews View (Hidden if configuring) -->
         <div id="reviews-content-view" class="flex flex-col flex-1 min-h-0 gap-lg">
@@ -2296,23 +2273,10 @@
       document.getElementById('review-nickname').value = '';
       document.getElementById('review-comment').value = '';
 
-      // Check Supabase connection state and toggle views
-      const configView = document.getElementById('supabase-config-view');
+      // Show reviews content
       const contentView = document.getElementById('reviews-content-view');
-      
-      if (!supabaseClient) {
-        // Not configured, show connection form
-        configView.classList.remove('hidden');
-        contentView.classList.add('hidden');
-        document.getElementById('sb-url-input').value = supabaseUrl;
-        document.getElementById('sb-key-input').value = supabaseKey;
-        document.getElementById('sb-disconnect-btn').classList.add('hidden');
-      } else {
-        // Connected, show review lists
-        configView.classList.add('hidden');
-        contentView.classList.remove('hidden');
-        loadReviews(id);
-      }
+      contentView.classList.remove('hidden');
+      loadReviews(id);
 
       // Show Modal
       const modal = document.getElementById('reviews-modal');
@@ -2351,7 +2315,7 @@
       if (!supabaseClient) {
         container.innerHTML = `
           <div class="text-center py-md text-on-surface-variant text-xs italic">
-            ${UI_TRANSLATIONS[currentLang].supabaseConfigDesc}
+            데이터베이스에 연결되어 있지 않습니다.
           </div>
         `;
         return;
@@ -2427,7 +2391,7 @@
       }
 
       if (!supabaseClient) {
-        showToast(UI_TRANSLATIONS[currentLang].supabaseConfigDesc, 'error');
+        showToast(currentLang === 'ko' ? '데이터베이스에 연결되어 있지 않습니다.' : 'Database is not connected.', 'error');
         return;
       }
 
@@ -2455,83 +2419,7 @@
       }
     }
 
-    function toggleSupabaseConfigView() {
-      const configView = document.getElementById('supabase-config-view');
-      const contentView = document.getElementById('reviews-content-view');
-      
-      if (configView.classList.contains('hidden')) {
-        configView.classList.remove('hidden');
-        contentView.classList.add('hidden');
-        document.getElementById('sb-url-input').value = supabaseUrl;
-        document.getElementById('sb-key-input').value = supabaseKey;
-        
-        if (supabaseClient) {
-          document.getElementById('sb-disconnect-btn').classList.remove('hidden');
-        } else {
-          document.getElementById('sb-disconnect-btn').classList.add('hidden');
-        }
-      } else {
-        configView.classList.add('hidden');
-        contentView.classList.remove('hidden');
-        if (activeAttractionId) {
-          loadReviews(activeAttractionId);
-        }
-      }
-    }
-
-    function saveSupabaseConfig(event) {
-      event.preventDefault();
-      
-      const url = document.getElementById('sb-url-input').value.trim();
-      const key = document.getElementById('sb-key-input').value.trim();
-
-      if (!url || !key) {
-        showToast(UI_TRANSLATIONS[currentLang].requiredFieldsError, 'error');
-        return;
-      }
-
-      // Temporarily store credentials
-      supabaseUrl = url;
-      supabaseKey = key;
-
-      // Try connection
-      const success = initSupabase();
-
-      if (success) {
-        localStorage.setItem('supabase_url', url);
-        localStorage.setItem('supabase_anon_key', key);
-        showToast(UI_TRANSLATIONS[currentLang].dbConfigSuccess, 'success');
-        
-        // Toggle view back to comments
-        document.getElementById('supabase-config-view').classList.add('hidden');
-        document.getElementById('reviews-content-view').classList.remove('hidden');
-        
-        if (activeAttractionId) {
-          loadReviews(activeAttractionId);
-        }
-      } else {
-        showToast(UI_TRANSLATIONS[currentLang].dbConfigError, 'error');
-      }
-    }
-
-    function disconnectSupabase() {
-      localStorage.removeItem('supabase_url');
-      localStorage.removeItem('supabase_anon_key');
-      supabaseUrl = '';
-      supabaseKey = '';
-      supabaseClient = null;
-      
-      showToast(currentLang === 'ko' ? '데이터베이스 연결이 해제되었습니다.' : 'Disconnected from database.', 'info');
-      
-      // Update UI Views
-      document.getElementById('sb-url-input').value = '';
-      document.getElementById('sb-key-input').value = '';
-      document.getElementById('sb-disconnect-btn').classList.add('hidden');
-      
-      if (activeAttractionId) {
-        loadReviews(activeAttractionId);
-      }
-    }
+    // Supabase config view controller functions removed
 
     function sharePortal() {
       if (navigator.share) {
